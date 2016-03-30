@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<title>Salt Lake City and area Webcams</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+		<!-- Custom styles for this template -->
+		<link href="webcams.css" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Raleway:900' rel='stylesheet' type='text/css'>
+	</head>
+	<body onload="startTime()">
+		<div class="container">
+			<!-- Carousel
+			================================================== -->
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<!-- Indicators -->
+				<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+				<li data-target="#myCarousel" data-slide-to="3"></li>
+				<li data-target="#myCarousel" data-slide-to="4"></li>
+				<li data-target="#myCarousel" data-slide-to="5"></li>
+			</ol>
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<img class="" src="http://images.webcams.travel/original/1326313225-Weather-Salt-Lake-City-%28U-of-U%29-Mayflower-Condominium.jpg" alt="Salt Lake City">
+					<div class="container">
+						<div class="carousel-caption">
+							<h1>Salt Lake City</h1>
+							<p>View over the city from the university.</p>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<img class="" src="http://wwc.instacam.com/instacamimg/SLTWK/SLTWK_l.jpg" alt="Salt Lake City">
+					<div class="container">
+						<div class="carousel-caption">
+							<h1>Salt Lake City</h1>
+							<p>View of the hills near Salt Lake City.</p>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<img class="" src="http://www.neng.usu.edu/webcam/latest/latest_bldcam2.jpg" alt="Logan">
+					<div class="container">
+						<div class="carousel-caption">
+							<h1>Logan</h1>
+							<p>View of Logan canyon on our route to Grand Teton.</p>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<img class="" src="http://bearlakeweather.com/upload/netcam.jpg" alt="Bear Lake">
+					<div class="container">
+						<div class="carousel-caption">
+							<h1>Bear Lake</h1>
+							<p>View of Bear Lake on our route to Grand Teton.</p>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<img class="" src="http://stl.seejh.com/afton/afton.jpg" alt="Afton">
+					<div class="container">
+						<div class="carousel-caption">
+							<h1>Afton</h1>
+							<p>View of Afton on our route to Grand Teton.</p>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<img class="" src="http://stl.seejh.com/starvalley/starvalley.jpg" alt="Star Valley">
+					<div class="container">
+						<div class="carousel-caption">
+							<h1>Thayne and Star Valley</h1>
+							<p>View of Star Valley on our route to Grand Teton.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+			<!-- /.carousel -->
+
+			<div class="col-md-16 pad-this">
+				<p class="pull-right"><br><span class="fa fa-clock-o fa-fw"></span>&nbsp;Current time in USA: <span id="clock"></span></p>
+				<h2><i class="text-info fa fa-camera-retro fa-lg fa-fw"></i>&nbsp;Webcams</h2>
+				<p style="clear:both">The pictures above were all taken from live webcams in Red Lodge so they are constantly changing and will appear dark at certain times of the day or may have things obscuring the view.  If any of the pictures look weird try coming back to this page again in a few moments.  You might even see us on one of them!</p>
+			</div>
+		
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script>
+		function startTime() {
+				var today=new Date();
+				var h=today.getHours()-7;
+				var m=today.getMinutes();
+				var s=today.getSeconds();
+				m = checkTime(m);
+				s = checkTime(s);
+				document.getElementById('clock').innerHTML = h+":"+m+":"+s;
+				var t = setTimeout(function(){startTime()},500);
+		}
+
+		function checkTime(i) {
+				if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
+				return i;
+		}
+		</script>
+		</div>
+	</body>
+</html>
