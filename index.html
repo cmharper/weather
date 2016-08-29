@@ -80,7 +80,7 @@
 		overflow-y: hidden;
 		padding: 2px 0 0 0;
 	}
-	.location-link {
+	.location-link, .location-link-2 {
 		display: inline;
 		font-size: 12px;
 		font-weight: bold;
@@ -138,7 +138,7 @@
 	</div>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
-	<script>
+	<script  type="text/javascript">
 	// define a counter that counts how many rows have been drawn
 	var row_counter = 0;
 
@@ -199,9 +199,9 @@
 			"type"			:	"<i class=\"fa fa-plane\"></i>",
 			"latitude"	:	"40.788910",
 			"longitude"	:	"-111.977951",
-			"staying"		:	[ "Sep 15", "Oct 6" ],
-			"visiting"	: [ "Oct 5" ],
-			"hotel"			:	"http://hamptoninn3.hilton.com/en/hotels/utah/hampton-inn-and-suites-salt-lake-city-airport-SLCHSHX/index.html",
+			"staying"		:	[ "Sep 15", "Oct 5" ],
+			"hotel"			:	"https://www.choicehotels.com/utah/salt-lake-city/quality-inn-hotels/ut155",
+			"hotel2"		:	"http://hamptoninn3.hilton.com/en/hotels/utah/hampton-inn-and-suites-salt-lake-city-airport-SLCHSHX/index.html",
 			"webcams"		: "webcams/saltlakecity.html"
 		},/*
 		"Colter Bay" : {
@@ -230,8 +230,8 @@
 			"type"			: "<i class=\"fa fa-map-marker\"></i>",
 			"latitude"	:	"43.481543",
 			"longitude"	:	"-110.768659",
-			"staying"		:	[ "Sep 16", "Sep 17", "Sep 18", "Oct 1", "Oct 2", "Oct 3", "Oct 4" ],
-			"visiting"	:	[ "Sep 16", "Sep 17", "Sep 18", "Oct 1", "Oct 2", "Oct 3", "Oct 4" ],
+			"staying"		:	[ "Sep 16", "Sep 17", "Oct 1", "Oct 2", "Oct 3", "Oct 4" ],
+			"visiting"	:	[ "Sep 16", "Sep 17", "Oct 1", "Oct 2", "Oct 3", "Oct 4" ],
 			"hotel"			:	"http://www.buckraillodge.com/",
 			"webcams"		: "webcams/grandteton.html"
 		},
@@ -241,9 +241,10 @@
 			"type"			: "<i class=\"fa fa-map-marker\"></i>",
 			"latitude"	:	"44.551260",
 			"longitude"	:	"-110.399655",
-			"staying"		:	[ "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 27", "Sep 28", "Sep 29", "Sep 30" ],
-			"visiting"	:	[ "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 27", "Sep 28", "Sep 29", "Sep 30" ],
+			"staying"		:	[ "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 26", "Sep 27", "Sep 28", "Sep 29", "Sep 30" ],
+			"visiting"	:	[ "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28", "Sep 29", "Sep 30", "Oct 01" ],
 			"hotel"			:	"http://www.yellowstonenationalparklodges.com/lodging/summer-lodges/lake-lodge-cabins/",
+			"hotel2"		:	"http://www.yellowstonenationalparklodges.com/lodging/summer-lodges/lake-yellowstone-hotel-cabins/",
 			"webcams"		: "webcams/yellowstone.html"
 		},
 		"Yellowstone (Old Faithful)" : {
@@ -252,7 +253,7 @@
 			"type"			: "<i class=\"fa fa-globe\"></i>",
 			"latitude"	:	"44.460593",
 			"longitude"	:	"-110.828284",
-			"visiting"	:	[ "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 27", "Sep 28", "Sep 29", "Sep 30" ],
+			"visiting"	:	[ "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28", "Sep 29", "Sep 30", "Oct 01" ],
 			"webcams"		: "webcams/yellowstone.html"
 		},
 		"Yellowstone (West Entrance)" : {
@@ -261,7 +262,7 @@
 			"type"			: "<i class=\"fa fa-globe\"></i>",
 			"latitude"	:	"44.656835",
 			"longitude"	:	"-111.089886",
-			"visiting"	:	[ "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 27", "Sep 28", "Sep 29", "Sep 30" ],
+			"visiting"	:	[ "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28", "Sep 29", "Sep 30", "Oct 01" ],
 			"webcams"		: "webcams/yellowstone.html"
 		},
 		"Yellowstone (Mammoth Hot Springs)" : {
@@ -270,8 +271,7 @@
 			"type"			: "<i class=\"fa fa-map-marker\"></i>",
 			"latitude"	:	"44.976156",
 			"longitude"	:	"-110.700415",
-			"visiting"	:	[ "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 27", "Sep 28", "Sep 29", "Sep 30" ],
-			"hotel"			:	"http://www.yellowstonenationalparklodges.com/lodging/winter-lodges/mammoth-hot-springs-cabins/",
+			"visiting"	:	[ "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28", "Sep 29", "Sep 30", "Oct 01" ],
 			"webcams"		: "webcams/yellowstone.html"
 		},
 		"Cody" : {
@@ -280,7 +280,7 @@
 			"type"			: "<i class=\"fa fa-globe\"></i>",
 			"latitude"	:	"44.516566",
 			"longitude"	:	"-109.088720",
-			"visiting"	:	[ "Sep 26" ],
+			"visiting"	:	[ "Sep 25" ],
 			"webcams"		: "webcams/redlodge.html"
 		},
 		"Red Lodge" : {
@@ -289,7 +289,8 @@
 			"type"			: "<i class=\"fa fa-map-marker\"></i>",
 			"latitude"	:	"45.180714",
 			"longitude"	:	"-109.247035",
-			"staying"		:	[ "Sep 26" ],
+			"staying"		:	[ "Sep 25" ],
+			"visiting"	:	[ "Sep 25", "Sep 26" ],
 			"hotel"			:	"http://yodelermotel.com",
 			"webcams"		: "webcams/redlodge.html"
 		}
@@ -611,9 +612,12 @@
 			$( "#"+rowid+" .location-link" ).append( "&nbsp;<span class=\"placetype tooltip_html\" title=\"<i class='fa fa-home'></i> and <i class='fa fa-map-marker'></i> indicate places we are staying<br><i class='fa fa-globe'></i> indicates somewhere we are visiting<br><i class='fa fa-plane'></i> indicates an airport stop\">"+place["type"]+"</span>" );
 		};
 		
-		// add the hotel url
+		// add the hotel urls
 		if ( typeof place["hotel"] !== "undefined" && place["hotel"] != "" ) {
 			$( "#"+rowid+" .location-link" ).append( "<span id=\"hotel-icon-"+placename+"\">&nbsp;<a class=\"tooltip\" href=\""+place["hotel"]+"\" title=\"Click to see where we are staying in "+title_place+"\"><i class=\"fa fa-fw fa-bed\"></i></a></span>" );
+		};
+		if ( typeof place["hotel2"] !== "undefined" && place["hotel2"] != "" ) {
+			$( "#"+rowid+" .location-link" ).append( "<span id=\"hotel-2-icon-"+placename+"\">&nbsp;<a class=\"tooltip\" href=\""+place["hotel2"]+"\" title=\"Click to see where we are staying in "+title_place+"\"><i class=\"fa fa-fw fa-bed\"></i></a></span>" );
 		};
 		
 		// add a link to webcams
@@ -689,6 +693,7 @@
 		// hide hotel data if it is not highlighted
 		if ( hotel_count == 0 ) {
 			$( "#hotel-icon-"+placename ).css( { "display" : "none" } );
+			$( "#hotel-2-icon-"+placename ).css( { "display" : "none" } );
 		};
 		// increment the row counter and add the tooltips if this is the last
 		// row to be drawn
