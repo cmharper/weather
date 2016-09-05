@@ -549,7 +549,7 @@
 			// if this date is in the list of special dates then put a coloured
 			// ring around it
 			if ( endsWith( date_to_check, dateArr[k] ) ) {
-				$( box_id ).addClass( colour );
+				if ( ! $( box_id ).hasClass('r') ) { $( box_id ).addClass( colour ); };
 				c += 1;
 			};
 		};
