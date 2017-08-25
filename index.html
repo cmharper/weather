@@ -98,7 +98,7 @@
 	.row {
 		clear: both;
 	}
-	
+
 	#throbber {
 		position:fixed;
 		top: 0;
@@ -125,7 +125,7 @@
 		border-radius: 10px;
 	}
 	.tooltip-theme {
-		border-radius: 5px; 
+		border-radius: 5px;
 		border: 2px solid #303030;
 		background: #505050;
 		color: #f3f3f3;
@@ -148,13 +148,13 @@
 	<script  type="text/javascript">
 	// determine if the user is using a mobile device
 	var mobile_device = new MobileDetect(window.navigator.userAgent).mobile();
-	
+
 	// define a counter that counts how many rows have been drawn
 	var row_counter = 0;
 
 	// define an array of locations to search for
 	// name is the location name
-	// id is the station id (search for it here: 
+	// id is the station id (search for it here:
 	// http://openweathermap.org/maps or by using coordinates first)
 	// type is an icon indicating what sort of place this is eg home, plane
 	// latitude and longitude are the coordinates in decimal format
@@ -169,7 +169,7 @@
 			"type"			: "<i class=\"fa fa-home\"></i>",
 			"latitude"	: "51.4302413",
 			"longitude"	: "-2.7626543",
-			"staying"		: [ "Sep 7", "Dec 25", "Oct 7" ]
+			"staying"		: [ "Sep 7", "Dec 25", "Oct 4" ]
 			},
 		"Chitterne" : {
 			"name"			:	"Chitterne",
@@ -177,8 +177,25 @@
 			"type"			: "<i class=\"fa fa-home\"></i>",
 			"latitude"	: "51.19394",
 			"longitude"	: "-2.01361",
-			"staying"		: [ "Apr 8", "Dec 25", "Oct 7" ]
+			"staying"		: [ "Apr 8", "Dec 25", "Oct 4" ]
 		},
+		"Brussels" :	{
+			"name"			:	"Brussels",
+			"id"				: "2800866",
+			"type"			: "<i class=\"fa fa-plane\"></i>",
+			"latitude"	:	"50.901175",
+			"longitude"	:	"4.485446",
+			"visiting"	:	[ "Sep 12", "Oct 4" ]
+		},
+		"Toronto" :	{
+			"name"			:	"Toronto",
+			"id"				: "6167865",
+			"type"			: "<i class=\"fa fa-plane\"></i>",
+			"latitude"	:	"43.678075",
+			"longitude"	:	"-79.625313",
+			"visiting"	:	[ "Sep 12", "Oct 3" ]
+		},
+		/*
 		"Amsterdam" :	{
 			"name"			:	"Amsterdam",
 			"id"				: "2747542",
@@ -187,7 +204,7 @@
 			"longitude"	:	"4.768333",
 			"visiting"	:	[ "Sep 15", "Oct 7" ]
 		},
-		/*"Detroit" : {
+		"Detroit" : {
 			"name"			:	"Detroit",
 			"id"				: "5007531",
 			"type"			:	"<i class=\"fa fa-plane\"></i>",
@@ -209,9 +226,9 @@
 			"type"			:	"<i class=\"fa fa-plane\"></i>",
 			"latitude"	:	"40.788910",
 			"longitude"	:	"-111.977951",
-			"staying"		:	[ "Sep 15", "Oct 5" ],
-			"hotel"			:	"https://www.choicehotels.com/utah/salt-lake-city/quality-inn-hotels/ut155",
-			"hotel2"		:	"http://hamptoninn3.hilton.com/en/hotels/utah/hampton-inn-and-suites-salt-lake-city-airport-SLCHSHX/index.html",
+			"staying"		:	[ "Sep 12", "Oct 2" ],
+			//"hotel"			:	"https://www.choicehotels.com/utah/salt-lake-city/quality-inn-hotels/ut155",
+			"hotel"		:	"http://hamptoninn3.hilton.com/en/hotels/utah/hampton-inn-and-suites-salt-lake-city-airport-SLCHSHX/index.html",
 			"webcams"		: "webcams/saltlakecity.html"
 		},/*
 		"Colter Bay" : {
@@ -231,7 +248,7 @@
 			"type"			: "<i class=\"fa fa-globe\"></i>",
 			"latitude"	:	"43.786680",
 			"longitude"	:	"-110.679395",
-			"visiting"	:	[ "Sep 16", "Sep 17", "Sep 18", "Oct 1", "Oct 2", "Oct 3", "Oct 4" ],
+			"visiting"	:	[ "Sep 13", "Sep 14", "Sep 28", "Sep 29", "Sep 30", "Oct 1" ],
 			"webcams"		: "webcams/grandteton.html"
 		},
 		"Jackson" : {
@@ -240,9 +257,10 @@
 			"type"			: "<i class=\"fa fa-map-marker\"></i>",
 			"latitude"	:	"43.481543",
 			"longitude"	:	"-110.768659",
-			"staying"		:	[ "Sep 16", "Sep 17", "Oct 1", "Oct 2", "Oct 3", "Oct 4" ],
-			"visiting"	:	[ "Sep 16", "Sep 17", "Oct 1", "Oct 2", "Oct 3", "Oct 4" ],
-			"hotel"			:	"http://www.buckraillodge.com/",
+			"staying"		:	[ "Sep 13", "Sep 14", "Sep 28", "Sep 29", "Sep 30", "Oct 1" ],
+			"visiting"	:	[ "Sep 13", "Sep 14", "Sep 28", "Sep 29", "Sep 30", "Oct 1" ],
+			"hotel"			:	"http://kudarmotel.com/",
+			"hotel2"		: "http://www.ranchinn.com/",
 			"webcams"		: "webcams/grandteton.html"
 		},
 		"Yellowstone (Lake Lodge and Hotel)" : {
@@ -251,8 +269,8 @@
 			"type"			: "<i class=\"fa fa-map-marker\"></i>",
 			"latitude"	:	"44.551260",
 			"longitude"	:	"-110.399655",
-			"staying"		:	[ "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 26", "Sep 27", "Sep 28", "Sep 29", "Sep 30" ],
-			"visiting"	:	[ "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28", "Sep 29", "Sep 30", "Oct 01" ],
+			"staying"		:	[ "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 25", "Sep 26", "Sep 27" ],
+			"visiting"	:	[ "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28" ],
 			"hotel"			:	"http://www.yellowstonenationalparklodges.com/lodging/summer-lodges/lake-lodge-cabins/",
 			"hotel2"		:	"http://www.yellowstonenationalparklodges.com/lodging/summer-lodges/lake-yellowstone-hotel-cabins/",
 			"webcams"		: "webcams/yellowstone.html"
@@ -263,7 +281,7 @@
 			"type"			: "<i class=\"fa fa-globe\"></i>",
 			"latitude"	:	"44.460593",
 			"longitude"	:	"-110.828284",
-			"visiting"	:	[ "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28", "Sep 29", "Sep 30", "Oct 01" ],
+			"visiting"	:	[ "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28" ],
 			"webcams"		: "webcams/yellowstone.html"
 		},
 		"Yellowstone (West Entrance)" : {
@@ -272,7 +290,7 @@
 			"type"			: "<i class=\"fa fa-globe\"></i>",
 			"latitude"	:	"44.656835",
 			"longitude"	:	"-111.089886",
-			"visiting"	:	[ "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28", "Sep 29", "Sep 30", "Oct 01" ],
+			"visiting"	:	[ "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28" ],
 			"webcams"		: "webcams/yellowstone.html"
 		},
 		"Yellowstone (Mammoth Hot Springs)" : {
@@ -281,7 +299,7 @@
 			"type"			: "<i class=\"fa fa-map-marker\"></i>",
 			"latitude"	:	"44.976156",
 			"longitude"	:	"-110.700415",
-			"visiting"	:	[ "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28", "Sep 29", "Sep 30", "Oct 01" ],
+			"visiting"	:	[ "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28" ],
 			"webcams"		: "webcams/yellowstone.html"
 		},
 		"Cody" : {
@@ -290,7 +308,7 @@
 			"type"			: "<i class=\"fa fa-globe\"></i>",
 			"latitude"	:	"44.516566",
 			"longitude"	:	"-109.088720",
-			"visiting"	:	[ "Sep 25" ],
+			"visiting"	:	[ "Sep 24" ],
 			"webcams"		: "webcams/redlodge.html"
 		},
 		"Red Lodge" : {
@@ -299,8 +317,8 @@
 			"type"			: "<i class=\"fa fa-map-marker\"></i>",
 			"latitude"	:	"45.180714",
 			"longitude"	:	"-109.247035",
-			"staying"		:	[ "Sep 25" ],
-			"visiting"	:	[ "Sep 25", "Sep 26" ],
+			"staying"		:	[ "Sep 24" ],
+			"visiting"	:	[ "Sep 24", "Sep 25" ],
 			"hotel"			:	"http://yodelermotel.com",
 			"webcams"		: "webcams/redlodge.html"
 		}
@@ -516,14 +534,14 @@
 		else if ( col > 10 && col <= 20 ) { return "9966FF" }
 		else { return "CC99CC" }
 	}
-			
-	// given "0-360" returns the nearest cardinal direction "N/NE/E/SE/S/SW/W/NW/N" 
+
+	// given "0-360" returns the nearest cardinal direction "N/NE/E/SE/S/SW/W/NW/N"
 	function getCardinal(angle) {
-		//easy to customize by changing the number of directions you have 
+		//easy to customize by changing the number of directions you have
 		var directions = 8;
 		var degree = 360 / directions;
 		angle = angle + degree/2;
-		
+
 		if (angle >= 0 * degree && angle < 1 * degree) { return "N"; }
 		else if (angle >= 1 * degree && angle < 2 * degree) { return "NE"; }
 		else if (angle >= 2 * degree && angle < 3 * degree) { return "E"; }
@@ -586,7 +604,7 @@
 					// try again
 					$.ajax(this);
 					return;
-				}            
+				}
 				return;
 			}
 		});
@@ -597,17 +615,17 @@
 		// print the json to the console
 		//console.log( loc );
 		//console.log( JSON.stringify( data ) );
-		
+
 		// define some stuff
 		var place = locations[loc];
 		var title_place = toTitleCase(loc);
 		var rowid = "weather-"+cleanName(loc)+"-"+cleanName(place["longitude"])+"-"+cleanName(place["latitude"]);
 		var placename = cleanName(loc);
-		
+
 		// get today's epoch seconds
 		var myDate = new Date();
 		var myEpoch = myDate.setUTCHours(0,0,0,0)/1000.0;
-		
+
 		// set up the divs to hold the data
 		// check if the location name is the same as the place where the data was recorded
 		var tt = title_place;
@@ -616,12 +634,12 @@
 			tt += ", recorded nearby in "+data.city.name;
 		};
 		$( "#"+rowid ).append( "<p class=\"location-link\"><a class=\"tooltip\" title=\"Weather in "+tt+"\"><i class=\"fa fa-arrow-down\" style=\"padding-right:3px\"></i>"+title_place+"</a></p><div class=\"weather-summary\"></div>" );
-		
+
 		// add the place type indicator
 		if ( typeof place["type"] !== "undefined" ) {
 			$( "#"+rowid+" .location-link" ).append( "&nbsp;<span class=\"placetype tooltip_html\" title=\"<i class='fa fa-home'></i> and <i class='fa fa-map-marker'></i> indicate places we are staying<br><i class='fa fa-globe'></i> indicates somewhere we are visiting<br><i class='fa fa-plane'></i> indicates an airport stop\">"+place["type"]+"</span>" );
 		};
-		
+
 		// add the hotel urls
 		if ( typeof place["hotel"] !== "undefined" && place["hotel"] != "" ) {
 			$( "#"+rowid+" .location-link" ).append( "<span id=\"hotel-icon-"+placename+"\">&nbsp;<a class=\"tooltip\" href=\""+place["hotel"]+"\" title=\"Click to see where we are staying in "+title_place+"\"><i class=\"fa fa-fw fa-bed\"></i></a></span>" );
@@ -629,12 +647,12 @@
 		if ( typeof place["hotel2"] !== "undefined" && place["hotel2"] != "" ) {
 			$( "#"+rowid+" .location-link" ).append( "<span id=\"hotel-2-icon-"+placename+"\">&nbsp;<a class=\"tooltip\" href=\""+place["hotel2"]+"\" title=\"Click to see where we are staying in "+title_place+"\"><i class=\"fa fa-fw fa-bed\"></i></a></span>" );
 		};
-		
+
 		// add a link to webcams
 		if ( typeof place["webcams"] !== "undefined" && place["webcams"] != "" ) {
 			$( "#"+rowid+" .location-link" ).append( "&nbsp;<a class=\"tooltip\" href=\""+place["webcams"]+"\" title=\"Click to see webcams near "+title_place+"\"><i class=\"fa fa-fw fa-camera-retro\"></i></a>" );
 		};
-		
+
 		// add the href to the link for this location
 		if ( typeof data.city !== "undefined" ) {
 			$( "#"+rowid+" a:first" ).attr( { "href" : "http://openweathermap.org/city/"+data.city.id } );
@@ -646,13 +664,13 @@
 		else {
 			$( "#"+rowid+" .location-link" ).append( "<span class=\"lighter\">&nbsp;no weather data near here was found; <a onclick=\"document.location.reload(true);\" href=\"#\" title=\"Try again\"><i class=\"fa fa-fw fa-refresh\"></i> click here</a> to try again</span>" );
 		};
-		
+
 		// get the length of the data
 		var data_length = data.list.length;
-		
+
 		// define a counter do determine whether the hotel data should be shown
 		var hotel_count = 0;
-		
+
 		// loop through all the data
 		for ( var j=0; j<data_length; j++ ) {
 			// define the element being looked at
@@ -662,7 +680,7 @@
 			var d = new Date(0);
 			d.setUTCSeconds(utcSeconds);
 			var mydate = dow[d.getDay()]+" "+months[d.getMonth()]+" "+d.getDate();
-			
+
 			// check if the day is in the past
 			if ( utcSeconds <= myEpoch ) { continue; };
 			// otherwise start processing it
@@ -671,18 +689,18 @@
 			// check if we are staying or visiting on this date
 			hotel_count += check_date( mydate, "#"+placename+"-"+item.dt, place["staying"], "r" );
 			hotel_count += check_date( mydate, "#"+placename+"-"+item.dt, place["visiting"], "g" );
-			
+
 			// do the image
-			$( "#"+placename+"-"+item.dt ).append( $( "<img>" ).attr( { 
+			$( "#"+placename+"-"+item.dt ).append( $( "<img>" ).attr( {
 				"src"		:	"images/weather/"+getWeatherIcon(item.weather[0].id,item.weather[0].icon)+".png",
 				"alt"		:	item.weather[0].description+", humidity: "+item.humidity+"%, "+item.clouds+"% cloud cover, "+Math.round(item.speed*2.236936)+"mph "+getCardinal(item.deg)+" wind.",
 				"title"	: toTitleCase(item.weather[0].description)+"<br>Humidity: "+item.humidity+"%<br>"+item.clouds+"% cloud cover<br>"+Math.round(item.speed*2.236936)+"mph "+getCardinal(item.deg)+" wind.",
 				"class"	: "tooltip_click"
 			} ) );
-			
+
 			// add the description of the weather
 			$( "#"+placename+"-"+item.dt ).append( "<span>"+convertDescription(item.weather[0].description)+"</span>" );
-			
+
 			//http://openweathermap.org/weather-conditions
 			// do the high temperature
 			if ( item.temp.day != item.temp.night ) {
@@ -694,12 +712,12 @@
 
 			// do the low temperature
 			$( "#"+placename+"-"+item.dt ).append( "<div style=\"border-bottom-right-radius: 3px;border-bottom-left-radius: 3px;background:#"+getColour(item.temp.night)+"\">"+Math.round(item.temp.night-273.15)+"&deg;C / "+Math.round((item.temp.night-273.15)* 9 / 5 + 32)+"&deg;F</div>" );
-			
+
 			// set the row height
 			var rowH = 1+parseInt($("#"+rowid+" p").css("height"))+parseInt($("#"+rowid+" .weather-summary div:first").css("height"))-parseInt($("#"+rowid+" .weather-summary div:first").css("margin-bottom"))-parseInt($("#"+rowid+" .weather-summary div:first").css("margin-top"))-parseInt($("#"+rowid+" .weather-summary div:first").css("border-top-width"))-parseInt($("#"+rowid+" .weather-summary div:first").css("border-bottom-width"));
 			if ( parseInt($("#"+rowid).css("height")) > rowH ) { $("#"+rowid+" .weather-summary").css({"height":rowH}); };
 		};
-		
+
 		// hide hotel data if it is not highlighted
 		if ( hotel_count == 0 ) {
 			$( "#hotel-icon-"+placename ).css( { "display" : "none" } );
@@ -741,7 +759,7 @@
 		// hide the throbber
 		$("#throbber").css({"display":"none"});
 	});
-		
+
 	// what to do when the page loads
 	$( document ).ready(function() {
 		// loop through the places in the locations object and ajax fetch them
@@ -749,7 +767,7 @@
 			// set up the div
 			var rowid = "weather-"+cleanName(loc)+"-"+cleanName(locations[loc]["longitude"])+"-"+cleanName(locations[loc]["latitude"]);
 			$( "body" ).append( "<div class=\"row\" id=\""+rowid+"\"></div>" );
-			
+
 			// Because we want to run this on a secure site we cannot use the openweathermap api
 			// directly and we have to go through a google apps script proxy.  if openweathermap
 			// change their policy this can be changed:
@@ -770,7 +788,7 @@
 					var url = "http://api.openweathermap.org/data/2.5/forecast/daily?lat="+locations[loc]["latitude"]+"&lon="+locations[loc]["longitude"]+"&cnt=16&mode=json&APPID=3cb460fd1b3976e9e5a069b2861dbdfb";
 				};
 			}
-			
+
 			$.ajax( {
 				url: url,
 				dataType: "json",
@@ -784,8 +802,8 @@
 				} else {
 					console.log(this.location+" was NOT downloaded");
 				}
-			});  
-		
+			});
+
 		};
 	});
 
