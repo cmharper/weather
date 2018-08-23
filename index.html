@@ -1,813 +1,870 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/tooltipster.min.css" />
-	<title>Holiday Weather</title>
-	<style>
-	body {
-		font-family: Arial, Helvetica, sans-serif;
-		background-color: #eee;
-		margin: 0 8px 8px 8px;
-		overflow-x: hidden;
-		overflow-y: scroll;
-	}
-	p, div, a, span, img {
-		padding: 0;
-		margin: 0;
-	}
-	.placetype {
-		opacity: 0.7;
-	}
-	.fa-bed {
-		color: #333;
-		opacity: 0.7;
-	}
-	.fa-camera-retro {
-		color: #333;
-		opacity: 0.7;
-	}
-	.o {
-		border-radius: 4px;
-		background-color: #fff;
-		width: 68px;
-		border: 2px solid;
-		margin: 2px 2px 2px 2px;
-		text-align: center;
-		float: left;
-	}
-	.r {
-		border-color: red;
-		box-shadow: 0 0 3px brown;
-	}
-	.g {
-		border-color: limegreen;
-		box-shadow: 0 0 3px green;
-	}
-	.weather-summary img {
-		clear: both;
-		height: 64px;
-		width: 64px;
-	}
-	.mobile-location {
-		font-size: 16px !important;
-	}
-	.mobile-row {
-		margin: 5px 0;
-	}
-	a:link {
-		text-decoration: none;
-		color: #000000;
-	}
-	a:visited {
-		text-decoration: none;
-		color: #000000;
-	}
-	a:active {
-		text-decoration: none;
-		color: #000000;
-	}
-	a:hover {
-		text-decoration: underline;
-		color: #222222;
-	}
-	.weather-summary {
-		position: relative;
-		z-index: 20;
-		background-color: #eee;
-		font: 10px sans-serif;
-		color: #0;
-		width: 100%;
-		overflow: hidden;
-		overflow-x: hidden;
-		overflow-y: hidden;
-		padding: 2px 0 0 0;
-	}
-	.location-link {
-		display: inline;
-		font-size: 12px;
-		font-weight: bold;
-	}
-	.lighter {
-		font-weight: 100;
-		font-size: 0.8em;
-	}
-	.row {
-		clear: both;
-	}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/tooltipster.min.css" />
+    <title>Holiday Weather</title>
+    <style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #eee;
+        margin: 0 8px 8px 8px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+    p, div, a, span, img {
+        padding: 0;
+        margin: 0;
+    }
+    .placetype {
+        opacity: 0.7;
+    }
+    .fa-bed {
+        color: #333;
+        opacity: 0.7;
+    }
+    .fa-camera-retro {
+        color: #333;
+        opacity: 0.7;
+    }
+    .o {
+        border-radius: 4px;
+        background-color: #fff;
+        width: 68px;
+        border: 2px solid;
+        margin: 2px 2px 2px 2px;
+        text-align: center;
+        float: left;
+    }
+    .r {
+        border-color: red;
+        box-shadow: 0 0 3px brown;
+    }
+    .g {
+        border-color: limegreen;
+        box-shadow: 0 0 3px green;
+    }
+    .weather-summary img {
+        clear: both;
+        height: 64px;
+        width: 64px;
+    }
+    .mobile-location {
+        font-size: 16px !important;
+    }
+    .mobile-row {
+        margin: 5px 0;
+    }
+    a:link {
+        text-decoration: none;
+        color: #000000;
+    }
+    a:visited {
+        text-decoration: none;
+        color: #000000;
+    }
+    a:active {
+        text-decoration: none;
+        color: #000000;
+    }
+    a:hover {
+        text-decoration: underline;
+        color: #222222;
+    }
+    .weather-summary {
+        position: relative;
+        z-index: 20;
+        background-color: #eee;
+        font: 10px sans-serif;
+        color: #0;
+        width: 100%;
+        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        padding: 2px 0 0 0;
+    }
+    .location-link {
+        display: inline;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .lighter {
+        font-weight: 100;
+        font-size: 0.8em;
+    }
+    .row {
+        clear: both;
+    }
 
-	#throbber {
-		position:fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: rgba(0,0,0,0.5);
-		z-index: 99;
-	}
-	#throbber p {
-		position:fixed;
+    #throbber {
+        position:fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 99;
+    }
+    #throbber p {
+        position:fixed;
     top: 50%;
     left: 50%;
     width: 256px;
     height: 256px;
     margin-top: -128px;
     margin-left: -128px;
-		text-align: center;
-		width: 160px;
-		height: 160px;
-		background-color: #FFFFFF;
-		color: #F4DE04;
-		border: 5px solid #F4DE04;
-		border-radius: 10px;
-	}
-	.tooltip-theme {
-		border-radius: 5px;
-		border: 2px solid #303030;
-		background: #505050;
-		color: #f3f3f3;
-	}
-	/* Use this next selector to style things like font-size and line-height: */
-	.tooltip-theme .tooltipster-content {
-		font-size: 12px;
-		line-height: 14px;
-		padding: 5px;
-	}
-	</style>
+        text-align: center;
+        width: 160px;
+        height: 160px;
+        background-color: #FFFFFF;
+        color: #F4DE04;
+        border: 5px solid #F4DE04;
+        border-radius: 10px;
+    }
+    .tooltip-theme {
+        border-radius: 5px;
+        border: 2px solid #303030;
+        background: #505050;
+        color: #f3f3f3;
+    }
+    /* Use this next selector to style things like font-size and line-height: */
+    .tooltip-theme .tooltipster-content {
+        font-size: 12px;
+        line-height: 14px;
+        padding: 5px;
+    }
+    </style>
 </head>
 <body>
-	<div id="throbber">
-		<p><img src="images/loading.gif"><br>loading</p>
-	</div>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.3.3/mobile-detect.min.js"></script>
-	<script  type="text/javascript">
-	// determine if the user is using a mobile device
-	var mobile_device = new MobileDetect(window.navigator.userAgent).mobile();
+    <div id="throbber">
+        <p><img src="images/loading.gif"><br>loading</p>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.2/mobile-detect.min.js"></script>
+    <script  type="text/javascript">
+    // determine if the user is using a mobile device
+    var mobile_device = new MobileDetect(window.navigator.userAgent).mobile();
 
-	// define a counter that counts how many rows have been drawn
-	var row_counter = 0;
+    // define a counter that counts how many rows have been drawn
+    var row_counter = 0;
 
-	// define an array of locations to search for
-	// name is the location name
-	// id is the station id (search for it here:
-	// http://openweathermap.org/maps or by using coordinates first)
-	// type is an icon indicating what sort of place this is eg home, plane
-	// latitude and longitude are the coordinates in decimal format
-	// staying is an array of special dates (that will be highlighted
-	// differently) of where we will be staying.  visiting is a similar
-	// array of places we will be visiting.
-	// the dates should be in the format "MMM D"
-	var locations = {
-		"Nailsea" : {
-			"name"			:	"Nailsea",
-			"id"				: "2641913",
-			"type"			: "<i class=\"fa fa-home\"></i>",
-			"latitude"	: "51.4302413",
-			"longitude"	: "-2.7626543",
-			"staying"		: [ "Sep 7", "Dec 25", "Oct 4" ]
-			},
-		"Chitterne" : {
-			"name"			:	"Chitterne",
-			"id"				: "3345423",
-			"type"			: "<i class=\"fa fa-home\"></i>",
-			"latitude"	: "51.19394",
-			"longitude"	: "-2.01361",
-			"staying"		: [ "Apr 8", "Dec 25", "Oct 4" ]
-		},
-		"Brussels" :	{
-			"name"			:	"Brussels",
-			"id"				: "2800866",
-			"type"			: "<i class=\"fa fa-plane\"></i>",
-			"latitude"	:	"50.901175",
-			"longitude"	:	"4.485446",
-			"visiting"	:	[ "Sep 12", "Oct 4" ]
-		},
-		"Toronto" :	{
-			"name"			:	"Toronto",
-			"id"				: "6167865",
-			"type"			: "<i class=\"fa fa-plane\"></i>",
-			"latitude"	:	"43.678075",
-			"longitude"	:	"-79.625313",
-			"visiting"	:	[ "Sep 12", "Oct 3" ]
-		},
-		/*
-		"Amsterdam" :	{
-			"name"			:	"Amsterdam",
-			"id"				: "2747542",
-			"type"			: "<i class=\"fa fa-plane\"></i>",
-			"latitude"	:	"52.310548",
-			"longitude"	:	"4.768333",
-			"visiting"	:	[ "Sep 15", "Oct 7" ]
-		},
-		"Detroit" : {
-			"name"			:	"Detroit",
-			"id"				: "5007531",
-			"type"			:	"<i class=\"fa fa-plane\"></i>",
-			"latitude"	:	"42.216270",
-			"longitude"	:	"-83.354582",
-			"visiting"	:	[ "Sep 16" ]
-		},
-		"Minneapolis Saint Paul" : {
-			"name"			:	"Minneapolis Saint Paul",
-			"id"				: "5037278",
-			"type"			:	"<i class=\"fa fa-plane\"></i>",
-			"latitude"	:	"44.883791",
-			"longitude"	:	"-93.221163",
-			"visiting"	:	[ "Oct 7" ]
-		},*/
-		"Salt Lake City" : {
-			"name"			:	"Salt Lake City",
-			"id"				: "5784595",
-			"type"			:	"<i class=\"fa fa-plane\"></i>",
-			"latitude"	:	"40.788910",
-			"longitude"	:	"-111.977951",
-			"staying"		:	[ "Sep 12", "Oct 2" ],
-			//"hotel"			:	"https://www.choicehotels.com/utah/salt-lake-city/quality-inn-hotels/ut155",
-			"hotel"		:	"http://hamptoninn3.hilton.com/en/hotels/utah/hampton-inn-and-suites-salt-lake-city-airport-SLCHSHX/index.html",
-			"webcams"		: "webcams/saltlakecity.html"
-		},/*
-		"Colter Bay" : {
-			"name"			:	"Colter Bay",
-			"id"				: "5840786",
-			"type"			: "<i class=\"fa fa-map-marker\"></i>",
-			"latitude"	:	"43.905156",
-			"longitude"	:	"-110.639051",
-			"staying"		:	[ "Sep 17", "Sep 18", "Sep 19" ],
-			"visiting"	:	[ "Oct 2", "Oct 3", "Oct 4", "Oct 5" ],
-			"hotel"			:	"http://www.gtlc.com/lodging/colter-bay-village-overview.aspx",
-			"webcams"		: "webcams/grandteton.html"
-		},*/
-		"Grand Teton National Park" : {
-			"name"			:	"Grand Teton National Park",
-			"id"				: "5832732",
-			"type"			: "<i class=\"fa fa-globe\"></i>",
-			"latitude"	:	"43.786680",
-			"longitude"	:	"-110.679395",
-			"visiting"	:	[ "Sep 13", "Sep 14", "Sep 28", "Sep 29", "Sep 30", "Oct 1" ],
-			"webcams"		: "webcams/grandteton.html"
-		},
-		"Jackson" : {
-			"name"			:	"Jackson",
-			"id"				: "5828648",
-			"type"			: "<i class=\"fa fa-map-marker\"></i>",
-			"latitude"	:	"43.481543",
-			"longitude"	:	"-110.768659",
-			"staying"		:	[ "Sep 13", "Sep 14", "Sep 28", "Sep 29", "Sep 30", "Oct 1" ],
-			"visiting"	:	[ "Sep 13", "Sep 14", "Sep 28", "Sep 29", "Sep 30", "Oct 1" ],
-			"hotel"			:	"http://kudarmotel.com/",
-			"hotel2"		: "http://www.ranchinn.com/",
-			"webcams"		: "webcams/grandteton.html"
-		},
-		"Yellowstone (Lake Lodge and Hotel)" : {
-			"name"			:	"Yellowstone (Lake Hotel)",
-			"id"				: "5829855",
-			"type"			: "<i class=\"fa fa-map-marker\"></i>",
-			"latitude"	:	"44.551260",
-			"longitude"	:	"-110.399655",
-			"staying"		:	[ "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 25", "Sep 26", "Sep 27" ],
-			"visiting"	:	[ "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28" ],
-			"hotel"			:	"http://www.yellowstonenationalparklodges.com/lodging/summer-lodges/lake-lodge-cabins/",
-			"hotel2"		:	"http://www.yellowstonenationalparklodges.com/lodging/summer-lodges/lake-yellowstone-hotel-cabins/",
-			"webcams"		: "webcams/yellowstone.html"
-		},
-		"Yellowstone (Old Faithful)" : {
-			"name"			:	"Yellowstone (Old Faithful)",
-			"id"				: "5840981",
-			"type"			: "<i class=\"fa fa-globe\"></i>",
-			"latitude"	:	"44.460593",
-			"longitude"	:	"-110.828284",
-			"visiting"	:	[ "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28" ],
-			"webcams"		: "webcams/yellowstone.html"
-		},
-		"Yellowstone (West Entrance)" : {
-			"name"			:	"Yellowstone (West Entrance)",
-			"id"				: "5685767",
-			"type"			: "<i class=\"fa fa-globe\"></i>",
-			"latitude"	:	"44.656835",
-			"longitude"	:	"-111.089886",
-			"visiting"	:	[ "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28" ],
-			"webcams"		: "webcams/yellowstone.html"
-		},
-		"Yellowstone (Mammoth Hot Springs)" : {
-			"name"			:	"Yellowstone (Mammoth Hot Springs)",
-			"id"				: "5658648",
-			"type"			: "<i class=\"fa fa-map-marker\"></i>",
-			"latitude"	:	"44.976156",
-			"longitude"	:	"-110.700415",
-			"visiting"	:	[ "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28" ],
-			"webcams"		: "webcams/yellowstone.html"
-		},
-		"Cody" : {
-			"name"			:	"Cody",
-			"id"				: "5821593",
-			"type"			: "<i class=\"fa fa-globe\"></i>",
-			"latitude"	:	"44.516566",
-			"longitude"	:	"-109.088720",
-			"visiting"	:	[ "Sep 24" ],
-			"webcams"		: "webcams/redlodge.html"
-		},
-		"Red Lodge" : {
-			"name"			:	"Red Lodge",
-			"id"				: "5673390",
-			"type"			: "<i class=\"fa fa-map-marker\"></i>",
-			"latitude"	:	"45.180714",
-			"longitude"	:	"-109.247035",
-			"staying"		:	[ "Sep 24" ],
-			"visiting"	:	[ "Sep 24", "Sep 25" ],
-			"hotel"			:	"http://yodelermotel.com",
-			"webcams"		: "webcams/redlodge.html"
-		}
-	};
+    // define an array of locations to search for
+    // name is the location name
+    // id is the station id (search for it here:
+    // http://openweathermap.org/maps or by using coordinates first)
+    // type is an icon indicating what sort of place this is eg home, plane
+    // latitude and longitude are the coordinates in decimal format
+    // staying is an array of special dates (that will be highlighted
+    // differently) of where we will be staying.  visiting is a similar
+    // array of places we will be visiting.
+    // the dates should be in the format "MMM D"
+    //
+    // see also: https://script.google.com/a/rper.info/d/1DW8uzxW2W9BYsq9ePnQWRiwgaLSG_OMJWl9fC1cIInpdMZZSCMwlL_8w/edit?usp=drive_web
+    var locations = {
+        "Nailsea" : {
+            "name"      : "Nailsea",
+            "id"        : "2641913",
+            "type"      : "<i class=\"fa fa-home\"></i>",
+            "latitude"  : "51.4302413",
+            "longitude" : "-2.7626543",
+            "staying"   : [ "Sep 7", "Dec 25", "Oct 4" ]
+        },
+        "Chitterne" : {
+            "name"      : "Chitterne",
+            "id"        : "3345423",
+            "type"      : "<i class=\"fa fa-home\"></i>",
+            "latitude"  : "51.19394",
+            "longitude" : "-2.01361",
+            "staying"   : [ "Apr 8", "Dec 25", "Oct 4" ]
+        },
+        // "Brussels" : {
+            // "name"      : "Brussels",
+            // "id"        : "2800866",
+            // "type"      : "<i class=\"fa fa-plane\"></i>",
+            // "latitude"  : "50.901175",
+            // "longitude" : "4.485446",
+            // "visiting"  : [ "Sep 12", "Oct 4" ]
+        // },
+        // "Toronto" :  {
+            // "name"       : "Toronto",
+            // "id"         : "6167865",
+            // "type"       : "<i class=\"fa fa-plane\"></i>",
+            // "latitude"   : "43.678075",
+            // "longitude"  : "-79.625313",
+            // "visiting"   : [ "Sep 12", "Oct 3" ]
+        // },
+        "Amsterdam" :   {
+            "name"      : "Amsterdam",
+            "id"        : "2747542",
+            "type"      : "<i class=\"fa fa-plane\"></i>",
+            "latitude"  : "52.310548",
+            "longitude" : "4.768333",
+            "visiting"  : [ "Sep 12", "Oct 4" ]
+        },
+        // "Detroit" : {
+            // "name"      : "Detroit",
+            // "id"        : "5007531",
+            // "type"      : "<i class=\"fa fa-plane\"></i>",
+            // "latitude"  : "42.216270",
+            // "longitude" : "-83.354582",
+            // "visiting"  : [ "Sep 16" ]
+        // },
+        "Minneapolis Saint Paul" : {
+            "name"      : "Minneapolis Saint Paul",
+            "id"        : "5037278",
+            "type"      : "<i class=\"fa fa-plane\"></i>",
+            "latitude"  : "44.883791",
+            "longitude" : "-93.221163",
+            "visiting"  : [ "Sep 12", "Oct 3" ]
+        },
+        "Bozeman" : {
+            "name"      : "Bozeman",
+            "id"        : "5641727",
+            "type"      : "<i class=\"fa fa-plane\"></i>",
+            "latitude"  : "45.68",
+            "longitude" : "-111.039",
+            "staying"   : [ "Sep 12", "Oct 2" ],
+            "visiting"  : [ "Oct 3" ],
+            "hotel"     : "https://www.cmoninn.com/bozeman",
+            "webcams"   : "webcams/bozeman.html"
+        },
+        // "Salt Lake City" : {
+            // "name"      : "Salt Lake City",
+            // "id"        : "5784595",
+            // "type"      : "<i class=\"fa fa-plane\"></i>",
+            // "latitude"  : "40.788910",
+            // "longitude" : "-111.977951",
+            // "staying"   : [ "Sep 12", "Oct 2" ],
+            // "hotel"     : "https://www.choicehotels.com/utah/salt-lake-city/quality-inn-hotels/ut155",
+            // "hotel"     : "http://hamptoninn3.hilton.com/en/hotels/utah/hampton-inn-and-suites-salt-lake-city-airport-SLCHSHX/index.html",
+            // "webcams"   : "webcams/saltlakecity.html"
+        // },
+        "Yellowstone (Lake Lodge and Hotel)" : {
+            "name"      : "Yellowstone (Lake Hotel)",
+            "id"        : "5829855",
+            "type"      : "<i class=\"fa fa-map-marker\"></i>",
+            "latitude"  : "44.551260",
+            "longitude" : "-110.399655",
+            "staying"   : [ "Sep 13", "Sep 14", "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 29", "Sep 30", "Oct 1" ],
+            "visiting"   : [ "Sep 13", "Sep 14", "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 29", "Sep 30", "Oct 1" ],
+            "hotel"     : "http://www.yellowstonenationalparklodges.com/lodging/summer-lodges/lake-lodge-cabins/",
+            "hotel2"    : "http://www.yellowstonenationalparklodges.com/lodging/summer-lodges/lake-yellowstone-hotel-cabins/",
+            "webcams"   : "webcams/yellowstone.html"
+        },
+        "Yellowstone (Old Faithful)" : {
+            "name"      : "Yellowstone (Old Faithful)",
+            "id"        : "5840981",
+            "type"      : "<i class=\"fa fa-globe\"></i>",
+            "latitude"  : "44.460593",
+            "longitude" : "-110.828284",
+            "visiting"   : [ "Sep 13", "Sep 14", "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 29", "Sep 30", "Oct 1" ],
+            "webcams"   : "webcams/yellowstone.html"
+        },
+        "Yellowstone (West Thumb)" : {
+            "name"      : "Yellowstone (West Thumb)",
+            "id"        : "5842684",
+            "type"      : "<i class=\"fa fa-globe\"></i>",
+            "latitude"  : "44.416",
+            "longitude" : "-110.575",
+            "visiting"   : [ "Sep 13", "Sep 14", "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 29", "Sep 30", "Oct 1" ],
+            "webcams"   : "webcams/yellowstone.html"
+        },
+        "Yellowstone (Canyon)" : {
+            "name"      : "Yellowstone (Canyon)",
+            "id"        : "5820534",
+            "type"      : "<i class=\"fa fa-globe\"></i>",
+            "latitude"  : "44.736",
+            "longitude" : "-110.493",
+            "visiting"   : [ "Sep 13", "Sep 14", "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 29", "Sep 30", "Oct 1" ],
+            "webcams"   : "webcams/yellowstone.html"
+        },
+        "Yellowstone (West Entrance)" : {
+            "name"      : "Yellowstone (West Entrance)",
+            "id"        : "5685767",
+            "type"      : "<i class=\"fa fa-globe\"></i>",
+            "latitude"  : "44.656835",
+            "longitude" : "-111.089886",
+            "visiting"   : [ "Sep 13", "Sep 14", "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 29", "Sep 30", "Oct 1" ],
+            "webcams"   : "webcams/yellowstone.html"
+        },
+        "Yellowstone (Mammoth Hot Springs)" : {
+            "name"      : "Yellowstone (Mammoth Hot Springs)",
+            "id"        : "5658648",
+            "type"      : "<i class=\"fa fa-map-marker\"></i>",
+            "latitude"  : "44.976156",
+            "longitude" : "-110.700415",
+            "visiting"   : [ "Sep 13", "Sep 14", "Sep 15", "Sep 16", "Sep 17", "Sep 18", "Sep 19", "Sep 20", "Sep 21", "Sep 22", "Sep 23", "Sep 29", "Sep 30", "Oct 1" ],
+            "webcams"   : "webcams/yellowstone.html"
+        },
+        "Colter Bay" : {
+            "name"      : "Colter Bay",
+            "id"        : "5840786",
+            "type"      : "<i class=\"fa fa-map-marker\"></i>",
+            "latitude"  : "43.905156",
+            "longitude" : "-110.639051",
+            // "staying"   : [ "Sep 23", "Sep 24", "Sep 19" ],
+            "visiting"  : [ "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28" ],
+            // "hotel"     : "http://www.gtlc.com/lodging/colter-bay-village-overview.aspx",
+            "webcams"   : "webcams/grandteton.html"
+        },
+        "Grand Teton National Park (Moose)" : {
+            "name"      : "Grand Teton National Park (Moose)",
+            "id"        : "5832732",
+            "type"      : "<i class=\"fa fa-globe\"></i>",
+            "latitude"  : "43.786680",
+            "longitude" : "-110.679395",
+            "visiting"  : [ "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28" ],
+            "webcams"   : "webcams/grandteton.html"
+        },
+        "Grand Teton National Park (Taggart Lake)" : {
+            "name"      : "Grand Teton National Park (Taggart Lake)",
+            "id"        : "5818249",
+            "type"      : "<i class=\"fa fa-globe\"></i>",
+            "latitude"  : "43.687",
+            "longitude" : "-110.735",
+            "visiting"  : [ "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28" ],
+            "webcams"   : "webcams/grandteton.html"
+        },
+        "Grand Teton National Park (Mormon Row)" : {
+            "name"      : "Grand Teton National Park (Mormon Row)",
+            "id"        : "5826715",
+            "type"      : "<i class=\"fa fa-globe\"></i>",
+            "latitude"  : "43.645",
+            "longitude" : "-110.664",
+            "visiting"  : [ "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28" ],
+            "webcams"   : "webcams/grandteton.html"
+        },
+        "Grand Teton National Park (Moose Wilson Road)" : {
+            "name"      : "Grand Teton National Park (Moose Wilson Road)",
+            "id"        : "5843239",
+            "type"      : "<i class=\"fa fa-globe\"></i>",
+            "latitude"  : "43.501",
+            "longitude" : "-110.875",
+            "visiting"  : [ "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28" ],
+            "webcams"   : "webcams/grandteton.html"
+        },
+        "Jackson" : {
+            "name"      : "Jackson",
+            "id"        : "5828648",
+            "type"      : "<i class=\"fa fa-map-marker\"></i>",
+            "latitude"  : "43.481543",
+            "longitude" : "-110.768659",
+            "staying"  : [ "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28" ],
+            "visiting"  : [ "Sep 23", "Sep 24", "Sep 25", "Sep 26", "Sep 27", "Sep 28" ],
+            // "hotel2"     : "http://kudarmotel.com/",
+            "hotel"    : "http://www.ranchinn.com/",
+            "webcams"   : "webcams/grandteton.html"
+        },
+        // "Cody" : {
+            // "name"      : "Cody",
+            // "id"        : "5821593",
+            // "type"      : "<i class=\"fa fa-globe\"></i>",
+            // "latitude"  : "44.516566",
+            // "longitude" : "-109.088720",
+            // "visiting"  : [ "Sep 24" ],
+            // "webcams"   : "webcams/redlodge.html"
+        // }
+        // "Red Lodge" : {
+            // "name"      : "Red Lodge",
+            // "id"        : "5673390",
+            // "type"      : "<i class=\"fa fa-map-marker\"></i>",
+            // "latitude"  : "45.180714",
+            // "longitude" : "-109.247035",
+            // "staying"   : [ "Sep 24" ],
+            // "visiting"  : [ "Sep 24", "Sep 25" ],
+            // "hotel"     : "http://yodelermotel.com",
+            // "webcams"   : "webcams/redlodge.html"
+        // }
+    };
 
-	// define months and days of the week
-	var months = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
-	var dow = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ];
+    // define months and days of the week
+    var months = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+    var dow = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ];
 
-	// this provides a retry function on .ajax
-	// see: https://github.com/johnkpaul/jquery-ajax-retry
-	!function(a){"function"==typeof define&&define.amd?define(["jquery"],a):a("object"==typeof exports?require("jquery"):jQuery)}(function(a){function b(b,c){var d=c.times,e=b.timeout;return function(f){function g(){a.ajax(h).retry({times:d-1,timeout:c.timeout,statusCodes:c.statusCodes}).pipe(i.resolve,i.reject)}var h=this,i=new a.Deferred,j=b.getResponseHeader("Retry-After");return d>1&&(!b.statusCodes||a.inArray(f.status,b.statusCodes)>-1)?(j&&(e=isNaN(j)?new Date(j).getTime()-a.now():1e3*parseInt(j,10),(isNaN(e)||0>e)&&(e=b.timeout)),void 0!==e?setTimeout(g,e):g()):i.rejectWith(this,arguments),i}}a.ajaxPrefilter(function(a,c,d){d.retry=function(a){return a.timeout&&(this.timeout=a.timeout),a.statusCodes&&(this.statusCodes=a.statusCodes),this.pipe(null,b(this,a))}})});
+    // this provides a retry function on .ajax
+    // see: https://github.com/johnkpaul/jquery-ajax-retry
+    !function(a){"function"==typeof define&&define.amd?define(["jquery"],a):a("object"==typeof exports?require("jquery"):jQuery)}(function(a){function b(b,c){var d=c.times,e=b.timeout;return function(f){function g(){a.ajax(h).retry({times:d-1,timeout:c.timeout,statusCodes:c.statusCodes}).pipe(i.resolve,i.reject)}var h=this,i=new a.Deferred,j=b.getResponseHeader("Retry-After");return d>1&&(!b.statusCodes||a.inArray(f.status,b.statusCodes)>-1)?(j&&(e=isNaN(j)?new Date(j).getTime()-a.now():1e3*parseInt(j,10),(isNaN(e)||0>e)&&(e=b.timeout)),void 0!==e?setTimeout(g,e):g()):i.rejectWith(this,arguments),i}}a.ajaxPrefilter(function(a,c,d){d.retry=function(a){return a.timeout&&(this.timeout=a.timeout),a.statusCodes&&(this.statusCodes=a.statusCodes),this.pipe(null,b(this,a))}})});
 
-	// a hack that converts the long weather description into one that is
-	// 12 characters or less
-	function convertDescription(str) {
-		if ( str == "clear sky" ) { return "Clear Skies" }
-		else if ( str == "sky is clear" ) { return "Clear Skies" }
-		else if ( str == "few clouds" ) { return "Few Clouds" }
-		else if ( str == "scattered clouds" ) { return "Sct Clouds" }
-		else if ( str == "broken clouds" ) { return "Brkn Clouds" }
-		else if ( str == "shower rain" ) { return "Rain Showers" }
-		else if ( str == "rain" ) { return "Rain" }
-		else if ( str == "thunderstorm" ) { return "Thunderstorm" }
-		else if ( str == "snow" ) { return "Snow" }
-		else if ( str == "mist" ) { return "Mist" }
-		else if ( str == "thunderstorm with light rain" ) { return "Thunderstorm" }
-		else if ( str == "thunderstorm with rain" ) { return "Thunderstorm" }
-		else if ( str == "thunderstorm with heavy rain" ) { return "Thunderstorm" }
-		else if ( str == "light thunderstorm" ) { return "Thunderstorm" }
-		else if ( str == "thunderstorm" ) { return "Thunderstorm" }
-		else if ( str == "heavy thunderstorm" ) { return "Thunderstorm" }
-		else if ( str == "ragged thunderstorm" ) { return "Thunderstorm" }
-		else if ( str == "thunderstorm with light drizzle" ) { return "Thunderstorm" }
-		else if ( str == "thunderstorm with drizzle" ) { return "Thunderstorm" }
-		else if ( str == "thunderstorm with heavy drizzle" ) { return "Thunderstorm" }
-		else if ( str == "light intensity drizzle" ) { return "Lt Drizzle" }
-		else if ( str == "drizzle" ) { return "Drizzle" }
-		else if ( str == "heavy intensity drizzle" ) { return "Hvy Drizzle" }
-		else if ( str == "light intensity drizzle rain" ) { return "Lt Drizzle" }
-		else if ( str == "drizzle rain" ) { return "Drizzle/Rain" }
-		else if ( str == "heavy intensity drizzle rain" ) { return "Drizzle/Rain" }
-		else if ( str == "shower rain and drizzle" ) { return "Drizzle/Rain" }
-		else if ( str == "heavy shower rain and drizzle" ) { return "Drizzle/Rain" }
-		else if ( str == "shower drizzle" ) { return "Drizzle" }
-		else if ( str == "light rain" ) { return "Light Rain" }
-		else if ( str == "moderate rain" ) { return "Mod Rain" }
-		else if ( str == "heavy intensity rain" ) { return "Heavy Rain" }
-		else if ( str == "very heavy rain" ) { return "V Heavy Rain" }
-		else if ( str == "extreme rain" ) { return "Extreme Rain" }
-		else if ( str == "freezing rain" ) { return "Frz Rain" }
-		else if ( str == "light intensity shower rain" ) { return "Lgt Showers" }
-		else if ( str == "shower rain" ) { return "Showers" }
-		else if ( str == "heavy intensity shower rain" ) { return "Hvy Showers" }
-		else if ( str == "ragged shower rain" ) { return "Showers" }
-		else if ( str == "light snow" ) { return "Light Snow" }
-		else if ( str == "snow" ) { return "Snow" }
-		else if ( str == "heavy snow" ) { return "Heavy Snow" }
-		else if ( str == "sleet" ) { return "Sleet" }
-		else if ( str == "shower sleet" ) { return "Sleet Shower" }
-		else if ( str == "light rain and snow" ) { return "Rain / Snow" }
-		else if ( str == "rain and snow" ) { return "Rain / Snow" }
-		else if ( str == "light shower snow" ) { return "Light Snow" }
-		else if ( str == "shower snow" ) { return "Snow Showers" }
-		else if ( str == "heavy shower snow" ) { return "Snow Showers" }
-		else if ( str == "mist" ) { return "Mist" }
-		else if ( str == "smoke" ) { return "Smoke" }
-		else if ( str == "haze" ) { return "Haze" }
-		else if ( str == "sand, dust whirls" ) { return "Dust Whirls" }
-		else if ( str == "fog" ) { return "Fog" }
-		else if ( str == "sand" ) { return "Sand" }
-		else if ( str == "dust" ) { return "Dust" }
-		else if ( str == "volcanic ash" ) { return "Volcanic Ash" }
-		else if ( str == "squalls" ) { return "Squalls" }
-		else if ( str == "tornado" ) { return "Tornado" }
-		else if ( str == "clear sky" ) { return "Clear Sky" }
-		else if ( str == "few clouds" ) { return "Few Clouds" }
-		else if ( str == "scattered clouds" ) { return "Sct Clouds" }
-		else if ( str == "broken clouds" ) { return "Brkn Clouds" }
-		else if ( str == "overcast clouds" ) { return "Overcast" }
-		else if ( str == "tropical storm" ) { return "Tropical Stm" }
-		else if ( str == "hurricane" ) { return "Hurricane" }
-		else if ( str == "cold" ) { return "Cold" }
-		else if ( str == "hot" ) { return "Hot" }
-		else if ( str == "windy" ) { return "Windy" }
-		else if ( str == "hail" ) { return "Hail" }
-		else if ( str == "calm" ) { return "Calm" }
-		else if ( str == "light breeze" ) { return "Lgt Breeze" }
-		else if ( str == "gentle breeze" ) { return "Breeze" }
-		else if ( str == "moderate breeze" ) { return "Mod Breeze" }
-		else if ( str == "fresh breeze" ) { return "Fresh Breeze" }
-		else if ( str == "strong breeze" ) { return "S Breeze" }
-		else if ( str == "high wind, near gale" ) { return "High Winds" }
-		else if ( str == "gale" ) { return "Gales" }
-		else if ( str == "severe gale" ) { return "Severe Gales" }
-		else if ( str == "storm" ) { return "Storm" }
-		else if ( str == "violent storm" ) { return "Violent Stm" }
-		else { return "Unknown" };
-	}
+    // a hack that converts the long weather description into one that is
+    // 12 characters or less
+    function convertDescription(str) {
+        if ( str == "clear sky" ) { return "Clear Skies" }
+        else if ( str == "sky is clear" ) { return "Clear Skies" }
+        else if ( str == "few clouds" ) { return "Few Clouds" }
+        else if ( str == "scattered clouds" ) { return "Sct Clouds" }
+        else if ( str == "broken clouds" ) { return "Brkn Clouds" }
+        else if ( str == "shower rain" ) { return "Rain Showers" }
+        else if ( str == "rain" ) { return "Rain" }
+        else if ( str == "thunderstorm" ) { return "Thunderstorm" }
+        else if ( str == "snow" ) { return "Snow" }
+        else if ( str == "mist" ) { return "Mist" }
+        else if ( str == "thunderstorm with light rain" ) { return "Thunderstorm" }
+        else if ( str == "thunderstorm with rain" ) { return "Thunderstorm" }
+        else if ( str == "thunderstorm with heavy rain" ) { return "Thunderstorm" }
+        else if ( str == "light thunderstorm" ) { return "Thunderstorm" }
+        else if ( str == "thunderstorm" ) { return "Thunderstorm" }
+        else if ( str == "heavy thunderstorm" ) { return "Thunderstorm" }
+        else if ( str == "ragged thunderstorm" ) { return "Thunderstorm" }
+        else if ( str == "thunderstorm with light drizzle" ) { return "Thunderstorm" }
+        else if ( str == "thunderstorm with drizzle" ) { return "Thunderstorm" }
+        else if ( str == "thunderstorm with heavy drizzle" ) { return "Thunderstorm" }
+        else if ( str == "light intensity drizzle" ) { return "Lt Drizzle" }
+        else if ( str == "drizzle" ) { return "Drizzle" }
+        else if ( str == "heavy intensity drizzle" ) { return "Hvy Drizzle" }
+        else if ( str == "light intensity drizzle rain" ) { return "Lt Drizzle" }
+        else if ( str == "drizzle rain" ) { return "Drizzle/Rain" }
+        else if ( str == "heavy intensity drizzle rain" ) { return "Drizzle/Rain" }
+        else if ( str == "shower rain and drizzle" ) { return "Drizzle/Rain" }
+        else if ( str == "heavy shower rain and drizzle" ) { return "Drizzle/Rain" }
+        else if ( str == "shower drizzle" ) { return "Drizzle" }
+        else if ( str == "light rain" ) { return "Light Rain" }
+        else if ( str == "moderate rain" ) { return "Mod Rain" }
+        else if ( str == "heavy intensity rain" ) { return "Heavy Rain" }
+        else if ( str == "very heavy rain" ) { return "V Heavy Rain" }
+        else if ( str == "extreme rain" ) { return "Extreme Rain" }
+        else if ( str == "freezing rain" ) { return "Frz Rain" }
+        else if ( str == "light intensity shower rain" ) { return "Lgt Showers" }
+        else if ( str == "shower rain" ) { return "Showers" }
+        else if ( str == "heavy intensity shower rain" ) { return "Hvy Showers" }
+        else if ( str == "ragged shower rain" ) { return "Showers" }
+        else if ( str == "light snow" ) { return "Light Snow" }
+        else if ( str == "snow" ) { return "Snow" }
+        else if ( str == "heavy snow" ) { return "Heavy Snow" }
+        else if ( str == "sleet" ) { return "Sleet" }
+        else if ( str == "shower sleet" ) { return "Sleet Shower" }
+        else if ( str == "light rain and snow" ) { return "Rain / Snow" }
+        else if ( str == "rain and snow" ) { return "Rain / Snow" }
+        else if ( str == "light shower snow" ) { return "Light Snow" }
+        else if ( str == "shower snow" ) { return "Snow Showers" }
+        else if ( str == "heavy shower snow" ) { return "Snow Showers" }
+        else if ( str == "mist" ) { return "Mist" }
+        else if ( str == "smoke" ) { return "Smoke" }
+        else if ( str == "haze" ) { return "Haze" }
+        else if ( str == "sand, dust whirls" ) { return "Dust Whirls" }
+        else if ( str == "fog" ) { return "Fog" }
+        else if ( str == "sand" ) { return "Sand" }
+        else if ( str == "dust" ) { return "Dust" }
+        else if ( str == "volcanic ash" ) { return "Volcanic Ash" }
+        else if ( str == "squalls" ) { return "Squalls" }
+        else if ( str == "tornado" ) { return "Tornado" }
+        else if ( str == "clear sky" ) { return "Clear Sky" }
+        else if ( str == "few clouds" ) { return "Few Clouds" }
+        else if ( str == "scattered clouds" ) { return "Sct Clouds" }
+        else if ( str == "broken clouds" ) { return "Brkn Clouds" }
+        else if ( str == "overcast clouds" ) { return "Overcast" }
+        else if ( str == "tropical storm" ) { return "Tropical Stm" }
+        else if ( str == "hurricane" ) { return "Hurricane" }
+        else if ( str == "cold" ) { return "Cold" }
+        else if ( str == "hot" ) { return "Hot" }
+        else if ( str == "windy" ) { return "Windy" }
+        else if ( str == "hail" ) { return "Hail" }
+        else if ( str == "calm" ) { return "Calm" }
+        else if ( str == "light breeze" ) { return "Lgt Breeze" }
+        else if ( str == "gentle breeze" ) { return "Breeze" }
+        else if ( str == "moderate breeze" ) { return "Mod Breeze" }
+        else if ( str == "fresh breeze" ) { return "Fresh Breeze" }
+        else if ( str == "strong breeze" ) { return "S Breeze" }
+        else if ( str == "high wind, near gale" ) { return "High Winds" }
+        else if ( str == "gale" ) { return "Gales" }
+        else if ( str == "severe gale" ) { return "Severe Gales" }
+        else if ( str == "storm" ) { return "Storm" }
+        else if ( str == "violent storm" ) { return "Violent Stm" }
+        else { return "Unknown" };
+    }
 
-	// a hack that converts the openweathermap icons into my favourite ones
-	function getWeatherIcon(code,img) {
-		if ( code >= 200 && code < 300 ) { return "35" }
-		else if ( code == "300" && img.indexOf("d") >= -1 ) { return "11" }
-		else if ( code == "300" && img.indexOf("n") >= -1 ) { return "11" }
-		else if ( code == "301" && img.indexOf("d") >= -1 ) { return "11" }
-		else if ( code == "301" && img.indexOf("n") >= -1 ) { return "11" }
-		else if ( code == "302" && img.indexOf("d") >= -1 ) { return "12" }
-		else if ( code == "302" && img.indexOf("n") >= -1 ) { return "12" }
-		else if ( code == "310" && img.indexOf("n") >= -1 ) { return "11" }
-		else if ( code == "310" && img.indexOf("d") >= -1 ) { return "11" }
-		else if ( code == "311" && img.indexOf("n") >= -1 ) { return "12" }
-		else if ( code == "311" && img.indexOf("d") >= -1 ) { return "12" }
-		else if ( code == "312" && img.indexOf("n") >= -1 ) { return "39" }
-		else if ( code == "312" && img.indexOf("d") >= -1 ) { return "45" }
-		else if ( code == "313" && img.indexOf("n") >= -1 ) { return "39" }
-		else if ( code == "313" && img.indexOf("d") >= -1 ) { return "45" }
-		else if ( code == "314" && img.indexOf("n") >= -1 ) { return "39" }
-		else if ( code == "314" && img.indexOf("d") >= -1 ) { return "45" }
-		else if ( code == "321" && img.indexOf("n") >= -1 ) { return "39" }
-		else if ( code == "321" && img.indexOf("d") >= -1 ) { return "45" }
-		else if ( code >= 300 && code < 400 ) { return "40" }
-		else if ( code == "500" && img.indexOf("n") >= -1 ) { return "39" }
-		else if ( code == "500" && img.indexOf("d") >= -1 ) { return "45" }
-		else if ( code == "501" && img.indexOf("n") >= -1 ) { return "11" }
-		else if ( code == "501" && img.indexOf("d") >= -1 ) { return "11" }
-		else if ( code == "502" && img.indexOf("n") >= -1 ) { return "12" }
-		else if ( code == "502" && img.indexOf("d") >= -1 ) { return "12" }
-		else if ( code == "503" && img.indexOf("n") >= -1 ) { return "12" }
-		else if ( code == "503" && img.indexOf("d") >= -1 ) { return "12" }
-		else if ( code == "504" && img.indexOf("n") >= -1 ) { return "12" }
-		else if ( code == "504" && img.indexOf("d") >= -1 ) { return "12" }
-		else if ( code == "511" && img.indexOf("n") >= -1 ) { return "10" }
-		else if ( code == "511" && img.indexOf("d") >= -1 ) { return "10" }
-		else if ( code == "520" && img.indexOf("n") >= -1 ) { return "39" }
-		else if ( code == "520" && img.indexOf("d") >= -1 ) { return "45" }
-		else if ( code == "521" && img.indexOf("n") >= -1 ) { return "39" }
-		else if ( code == "521" && img.indexOf("d") >= -1 ) { return "45" }
-		else if ( code == "522" && img.indexOf("n") >= -1 ) { return "12" }
-		else if ( code == "522" && img.indexOf("d") >= -1 ) { return "12" }
-		else if ( code == "531" && img.indexOf("n") >= -1 ) { return "39" }
-		else if ( code == "531" && img.indexOf("d") >= -1 ) { return "45" }
-		else if ( code >= 500 && code <= 510 ) { return "40" }
-		else if ( code == 511 ) { return "10" }
-		else if ( code >= 520  && code < 600 ) { return "40" }
-		else if ( code == "600" ) { return "13" }
-		else if ( code == "601" ) { return "14" }
-		else if ( code == "602" ) { return "15" }
-		else if ( code == "611" ) { return "5" }
-		else if ( code == "612" ) { return "5" }
-		else if ( code == "615" ) { return "7" }
-		else if ( code == "616" ) { return "7" }
-		else if ( code == "620" ) { return "16" }
-		else if ( code == "621" ) { return "16" }
-		else if ( code == "622" ) { return "16" }
-		else if ( code >= 600  && code < 700 ) { return "14" }
-		else if ( code == "701" ) { return "20" }
-		else if ( code == "711" ) { return "22" }
-		else if ( code == "721" ) { return "21" }
-		else if ( code == "731" ) { return "19" }
-		else if ( code == "741" ) { return "20" }
-		else if ( code == "751" ) { return "19" }
-		else if ( code == "761" ) { return "19" }
-		else if ( code == "762" ) { return "19" }
-		else if ( code == "771" ) { return "23" }
-		else if ( code == "781" ) { return "23" }
-		else if ( code >= 700  && code < 800 ) { return "NA" }
-		else if ( code == "800" && img.indexOf("d") >= -1 ) { return "32" }
-		else if ( code == "800" && img.indexOf("n") >= -1 ) { return "31" }
-		else if ( code == "801" && img.indexOf("d") >= -1 ) { return "34" }
-		else if ( code == "801" && img.indexOf("n") >= -1 ) { return "33" }
-		else if ( code == "802" && img.indexOf("d") >= -1 ) { return "30" }
-		else if ( code == "802" && img.indexOf("n") >= -1 ) { return "29" }
-		else if ( code == "803" && img.indexOf("d") >= -1 ) { return "28" }
-		else if ( code == "803" && img.indexOf("n") >= -1 ) { return "27" }
-		else if ( code == "804" && img.indexOf("d") >= -1 ) { return "26" }
-		else if ( code == "804" && img.indexOf("n") >= -1 ) { return "26" }
-		else if ( code >= 800  && code < 900 ) { return "NA" }
-		else if ( code == "900" ) { return "1" }
-		else if ( code == "901" ) { return "1" }
-		else if ( code == "902" ) { return "1" }
-		else if ( code == "903" ) { return "25" }
-		else if ( code == "904" ) { return "36" }
-		else if ( code == "905" ) { return "23" }
-		else if ( code == "906" ) { return "6" }
-		else if ( code == "951" ) { return "32" }
-		else if ( code == "952" ) { return "23" }
-		else if ( code == "953" ) { return "23" }
-		else if ( code == "954" ) { return "23" }
-		else if ( code == "955" ) { return "23" }
-		else if ( code == "956" ) { return "23" }
-		else if ( code == "957" ) { return "23" }
-		else if ( code == "958" ) { return "23" }
-		else if ( code == "959" ) { return "23" }
-		else if ( code == "960" ) { return "1" }
-		else if ( code == "961" ) { return "1" }
-		else if ( code == "962" ) { return "1" }
-		else { return "NA" };
-	}
+    // a hack that converts the openweathermap icons into my favourite ones
+    function getWeatherIcon(code,img) {
+        if ( code >= 200 && code < 300 ) { return "35" }
+        else if ( code == "300" && img.indexOf("d") >= -1 ) { return "11" }
+        else if ( code == "300" && img.indexOf("n") >= -1 ) { return "11" }
+        else if ( code == "301" && img.indexOf("d") >= -1 ) { return "11" }
+        else if ( code == "301" && img.indexOf("n") >= -1 ) { return "11" }
+        else if ( code == "302" && img.indexOf("d") >= -1 ) { return "12" }
+        else if ( code == "302" && img.indexOf("n") >= -1 ) { return "12" }
+        else if ( code == "310" && img.indexOf("n") >= -1 ) { return "11" }
+        else if ( code == "310" && img.indexOf("d") >= -1 ) { return "11" }
+        else if ( code == "311" && img.indexOf("n") >= -1 ) { return "12" }
+        else if ( code == "311" && img.indexOf("d") >= -1 ) { return "12" }
+        else if ( code == "312" && img.indexOf("n") >= -1 ) { return "39" }
+        else if ( code == "312" && img.indexOf("d") >= -1 ) { return "45" }
+        else if ( code == "313" && img.indexOf("n") >= -1 ) { return "39" }
+        else if ( code == "313" && img.indexOf("d") >= -1 ) { return "45" }
+        else if ( code == "314" && img.indexOf("n") >= -1 ) { return "39" }
+        else if ( code == "314" && img.indexOf("d") >= -1 ) { return "45" }
+        else if ( code == "321" && img.indexOf("n") >= -1 ) { return "39" }
+        else if ( code == "321" && img.indexOf("d") >= -1 ) { return "45" }
+        else if ( code >= 300 && code < 400 ) { return "40" }
+        else if ( code == "500" && img.indexOf("n") >= -1 ) { return "39" }
+        else if ( code == "500" && img.indexOf("d") >= -1 ) { return "45" }
+        else if ( code == "501" && img.indexOf("n") >= -1 ) { return "11" }
+        else if ( code == "501" && img.indexOf("d") >= -1 ) { return "11" }
+        else if ( code == "502" && img.indexOf("n") >= -1 ) { return "12" }
+        else if ( code == "502" && img.indexOf("d") >= -1 ) { return "12" }
+        else if ( code == "503" && img.indexOf("n") >= -1 ) { return "12" }
+        else if ( code == "503" && img.indexOf("d") >= -1 ) { return "12" }
+        else if ( code == "504" && img.indexOf("n") >= -1 ) { return "12" }
+        else if ( code == "504" && img.indexOf("d") >= -1 ) { return "12" }
+        else if ( code == "511" && img.indexOf("n") >= -1 ) { return "10" }
+        else if ( code == "511" && img.indexOf("d") >= -1 ) { return "10" }
+        else if ( code == "520" && img.indexOf("n") >= -1 ) { return "39" }
+        else if ( code == "520" && img.indexOf("d") >= -1 ) { return "45" }
+        else if ( code == "521" && img.indexOf("n") >= -1 ) { return "39" }
+        else if ( code == "521" && img.indexOf("d") >= -1 ) { return "45" }
+        else if ( code == "522" && img.indexOf("n") >= -1 ) { return "12" }
+        else if ( code == "522" && img.indexOf("d") >= -1 ) { return "12" }
+        else if ( code == "531" && img.indexOf("n") >= -1 ) { return "39" }
+        else if ( code == "531" && img.indexOf("d") >= -1 ) { return "45" }
+        else if ( code >= 500 && code <= 510 ) { return "40" }
+        else if ( code == 511 ) { return "10" }
+        else if ( code >= 520  && code < 600 ) { return "40" }
+        else if ( code == "600" ) { return "13" }
+        else if ( code == "601" ) { return "14" }
+        else if ( code == "602" ) { return "15" }
+        else if ( code == "611" ) { return "5" }
+        else if ( code == "612" ) { return "5" }
+        else if ( code == "615" ) { return "7" }
+        else if ( code == "616" ) { return "7" }
+        else if ( code == "620" ) { return "16" }
+        else if ( code == "621" ) { return "16" }
+        else if ( code == "622" ) { return "16" }
+        else if ( code >= 600  && code < 700 ) { return "14" }
+        else if ( code == "701" ) { return "20" }
+        else if ( code == "711" ) { return "22" }
+        else if ( code == "721" ) { return "21" }
+        else if ( code == "731" ) { return "19" }
+        else if ( code == "741" ) { return "20" }
+        else if ( code == "751" ) { return "19" }
+        else if ( code == "761" ) { return "19" }
+        else if ( code == "762" ) { return "19" }
+        else if ( code == "771" ) { return "23" }
+        else if ( code == "781" ) { return "23" }
+        else if ( code >= 700  && code < 800 ) { return "NA" }
+        else if ( code == "800" && img.indexOf("d") >= -1 ) { return "32" }
+        else if ( code == "800" && img.indexOf("n") >= -1 ) { return "31" }
+        else if ( code == "801" && img.indexOf("d") >= -1 ) { return "34" }
+        else if ( code == "801" && img.indexOf("n") >= -1 ) { return "33" }
+        else if ( code == "802" && img.indexOf("d") >= -1 ) { return "30" }
+        else if ( code == "802" && img.indexOf("n") >= -1 ) { return "29" }
+        else if ( code == "803" && img.indexOf("d") >= -1 ) { return "28" }
+        else if ( code == "803" && img.indexOf("n") >= -1 ) { return "27" }
+        else if ( code == "804" && img.indexOf("d") >= -1 ) { return "26" }
+        else if ( code == "804" && img.indexOf("n") >= -1 ) { return "26" }
+        else if ( code >= 800  && code < 900 ) { return "NA" }
+        else if ( code == "900" ) { return "1" }
+        else if ( code == "901" ) { return "1" }
+        else if ( code == "902" ) { return "1" }
+        else if ( code == "903" ) { return "25" }
+        else if ( code == "904" ) { return "36" }
+        else if ( code == "905" ) { return "23" }
+        else if ( code == "906" ) { return "6" }
+        else if ( code == "951" ) { return "32" }
+        else if ( code == "952" ) { return "23" }
+        else if ( code == "953" ) { return "23" }
+        else if ( code == "954" ) { return "23" }
+        else if ( code == "955" ) { return "23" }
+        else if ( code == "956" ) { return "23" }
+        else if ( code == "957" ) { return "23" }
+        else if ( code == "958" ) { return "23" }
+        else if ( code == "959" ) { return "23" }
+        else if ( code == "960" ) { return "1" }
+        else if ( code == "961" ) { return "1" }
+        else if ( code == "962" ) { return "1" }
+        else { return "NA" };
+    }
 
-	// convert a temperature (col) into an HTML colour
-	function getColour(col) {
-		var col = Math.round((col-273.15)* 9 / 5 + 32);
-		if ( col > 100 ) { return "DD0000" }
-		else if ( col > 90 && col <= 100 ) { return "FF3300" }
-		else if ( col > 80 && col <= 90 ) { return "FF5500" }
-		else if ( col > 70 && col <= 80 ) { return "FF9933" }
-		else if ( col > 60 && col <= 70 ) { return "FFCC33" }
-		else if ( col > 50 && col <= 60 ) { return "FFFF99" }
-		else if ( col > 40 && col <= 50 ) { return "66CC66" }
-		else if ( col > 30 && col <= 40 ) { return "99CCFF" }
-		else if ( col > 20 && col <= 30 ) { return "3399FF" }
-		else if ( col > 10 && col <= 20 ) { return "9966FF" }
-		else { return "CC99CC" }
-	}
+    // convert a temperature (col) into an HTML colour
+    function getColour(col) {
+        var col = Math.round((col-273.15)* 9 / 5 + 32);
+        if ( col > 100 ) { return "DD0000" }
+        else if ( col > 90 && col <= 100 ) { return "FF3300" }
+        else if ( col > 80 && col <= 90 ) { return "FF5500" }
+        else if ( col > 70 && col <= 80 ) { return "FF9933" }
+        else if ( col > 60 && col <= 70 ) { return "FFCC33" }
+        else if ( col > 50 && col <= 60 ) { return "FFFF99" }
+        else if ( col > 40 && col <= 50 ) { return "66CC66" }
+        else if ( col > 30 && col <= 40 ) { return "99CCFF" }
+        else if ( col > 20 && col <= 30 ) { return "3399FF" }
+        else if ( col > 10 && col <= 20 ) { return "9966FF" }
+        else { return "CC99CC" }
+    }
 
-	// given "0-360" returns the nearest cardinal direction "N/NE/E/SE/S/SW/W/NW/N"
-	function getCardinal(angle) {
-		//easy to customize by changing the number of directions you have
-		var directions = 8;
-		var degree = 360 / directions;
-		angle = angle + degree/2;
+    // given "0-360" returns the nearest cardinal direction "N/NE/E/SE/S/SW/W/NW/N"
+    function getCardinal(angle) {
+        //easy to customize by changing the number of directions you have
+        var directions = 8;
+        var degree = 360 / directions;
+        angle = angle + degree/2;
 
-		if (angle >= 0 * degree && angle < 1 * degree) { return "N"; }
-		else if (angle >= 1 * degree && angle < 2 * degree) { return "NE"; }
-		else if (angle >= 2 * degree && angle < 3 * degree) { return "E"; }
-		else if (angle >= 3 * degree && angle < 4 * degree) { return "SE"; }
-		else if (angle >= 4 * degree && angle < 5 * degree) { return "S"; }
-		else if (angle >= 5 * degree && angle < 6 * degree) { return "SW"; }
-		else if (angle >= 6 * degree && angle < 7 * degree) { return "W"; }
-		else if (angle >= 7 * degree && angle < 8 * degree) { return "NW"; }
-		else { return "N"; };
-	}
+        if (angle >= 0 * degree && angle < 1 * degree) { return "N"; }
+        else if (angle >= 1 * degree && angle < 2 * degree) { return "NE"; }
+        else if (angle >= 2 * degree && angle < 3 * degree) { return "E"; }
+        else if (angle >= 3 * degree && angle < 4 * degree) { return "SE"; }
+        else if (angle >= 4 * degree && angle < 5 * degree) { return "S"; }
+        else if (angle >= 5 * degree && angle < 6 * degree) { return "SW"; }
+        else if (angle >= 6 * degree && angle < 7 * degree) { return "W"; }
+        else if (angle >= 7 * degree && angle < 8 * degree) { return "NW"; }
+        else { return "N"; };
+    }
 
-	// hack to remove non-alphanumerics from a string
-	function cleanName(str) {
-		return str.replace(/\W/g, '_');
-	}
+    // hack to remove non-alphanumerics from a string
+    function cleanName(str) {
+        return str.replace(/\W/g, '_');
+    }
 
-	// hack a string into Title Case
-	function toTitleCase(str) {
-		return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
-	}
+    // hack a string into Title Case
+    function toTitleCase(str) {
+        return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    }
 
-	// implement a string ends with xyz function
-	function endsWith(str, suffix) {
-		return str.indexOf(suffix, str.length - suffix.length) !== -1;
-	}
+    // implement a string ends with xyz function
+    function endsWith(str, suffix) {
+        return str.indexOf(suffix, str.length - suffix.length) !== -1;
+    }
 
-	// function to colour specific dates
-	function check_date( date_to_check, box_id, dateArr, colour ) {
-		var c = 0;
-		if ( typeof dateArr === "undefined" ) { return c; };
-		var dates_length = dateArr.length;
-		for ( var k=0; k<dates_length; k++ ) {
-			// if this date is in the list of special dates then put a coloured
-			// ring around it
-			if ( endsWith( date_to_check, dateArr[k] ) ) {
-				if ( ! $( box_id ).hasClass('r') ) { $( box_id ).addClass( colour ); };
-				c += 1;
-			};
-		};
-		return c;
-	}
+    // function to colour specific dates
+    function check_date( date_to_check, box_id, dateArr, colour ) {
+        var c = 0;
+        if ( typeof dateArr === "undefined" ) { return c; };
+        var dates_length = dateArr.length;
+        for ( var k=0; k<dates_length; k++ ) {
+            // if this date is in the list of special dates then put a coloured
+            // ring around it
+            if ( endsWith( date_to_check, dateArr[k] ) ) {
+                if ( ! $( box_id ).hasClass('r') ) { $( box_id ).addClass( colour ); };
+                c += 1;
+            };
+        };
+        return c;
+    }
 
-	function try_dl ( url ) {
-		var data_found = [];
-		$.ajax({
-			url : url,
-			type : 'GET',
-			async: false,
-			dataType: 'json',
-			tryCount : 0,
-			retryLimit : 3,
-			success : function(json) {
-				//do something
-				data_found.push(json);
-				return [ json ];
-			},
-			error : function(xhr, textStatus, errorThrown ) {
-				this.tryCount++;
-				if (this.tryCount <= this.retryLimit) {
-					// try again
-					$.ajax(this);
-					return;
-				}
-				return;
-			}
-		});
-		return data_found;
-	}
+    function try_dl ( url ) {
+        var data_found = [];
+        $.ajax({
+            url : url,
+            type : 'GET',
+            async: false,
+            dataType: 'json',
+            tryCount : 0,
+            retryLimit : 3,
+            success : function(json) {
+                //do something
+                data_found.push(json);
+                return [ json ];
+            },
+            error : function(xhr, textStatus, errorThrown ) {
+                this.tryCount++;
+                if (this.tryCount <= this.retryLimit) {
+                    // try again
+                    $.ajax(this);
+                    return;
+                }
+                return;
+            }
+        });
+        return data_found;
+    }
 
-	function drawRow( data, loc ) {
-		// print the json to the console
-		//console.log( loc );
-		//console.log( JSON.stringify( data ) );
+    function drawRow( data, loc ) {
+        // print the json to the console
+        //console.log( loc );
+        //console.log( JSON.stringify( data ) );
 
-		// define some stuff
-		var place = locations[loc];
-		var title_place = toTitleCase(loc);
-		var rowid = "weather-"+cleanName(loc)+"-"+cleanName(place["longitude"])+"-"+cleanName(place["latitude"]);
-		var placename = cleanName(loc);
+        // define some stuff
+        var place = locations[loc];
+        var title_place = toTitleCase(loc);
+        var rowid = "weather-"+cleanName(loc)+"-"+cleanName(place["longitude"])+"-"+cleanName(place["latitude"]);
+        var placename = cleanName(loc);
 
-		// get today's epoch seconds
-		var myDate = new Date();
-		var myEpoch = myDate.setUTCHours(0,0,0,0)/1000.0;
+        // get today's epoch seconds
+        var myDate = new Date();
+        var myEpoch = myDate.setUTCHours(0,0,0,0)/1000.0;
 
-		// set up the divs to hold the data
-		// check if the location name is the same as the place where the data was recorded
-		var tt = title_place;
-		if ( typeof data.city !== "undefined" && title_place != toTitleCase(data.city.name) ) {
-			//$( "#"+rowid+" .location-link" ).append( "<span class=\"lighter\">&nbsp;(weather recorded nearby in "+data.city.name+")</span>" );
-			tt += ", recorded nearby in "+data.city.name;
-		};
-		$( "#"+rowid ).append( "<p class=\"location-link\"><a class=\"tooltip\" title=\"Weather in "+tt+"\"><i class=\"fa fa-arrow-down\" style=\"padding-right:3px\"></i>"+title_place+"</a></p><div class=\"weather-summary\"></div>" );
+        // set up the divs to hold the data
+        // check if the location name is the same as the place where the data was recorded
+        var tt = title_place;
+        if ( typeof data.city !== "undefined" && title_place != toTitleCase(data.city.name) ) {
+            //$( "#"+rowid+" .location-link" ).append( "<span class=\"lighter\">&nbsp;(weather recorded nearby in "+data.city.name+")</span>" );
+            tt += ", recorded nearby in "+data.city.name;
+        };
+        $( "#"+rowid ).append( "<p class=\"location-link\"><a class=\"tooltip\" title=\"Weather in "+tt+"\"><i class=\"fa fa-arrow-down\" style=\"padding-right:3px\"></i>"+title_place+"</a></p><div class=\"weather-summary\"></div>" );
 
-		// add the place type indicator
-		if ( typeof place["type"] !== "undefined" ) {
-			$( "#"+rowid+" .location-link" ).append( "&nbsp;<span class=\"placetype tooltip_html\" title=\"<i class='fa fa-home'></i> and <i class='fa fa-map-marker'></i> indicate places we are staying<br><i class='fa fa-globe'></i> indicates somewhere we are visiting<br><i class='fa fa-plane'></i> indicates an airport stop\">"+place["type"]+"</span>" );
-		};
+        // add the place type indicator
+        if ( typeof place["type"] !== "undefined" ) {
+            $( "#"+rowid+" .location-link" ).append( "&nbsp;<span class=\"placetype tooltip_html\" title=\"<i class='fa fa-home'></i> and <i class='fa fa-map-marker'></i> indicate places we are staying<br><i class='fa fa-globe'></i> indicates somewhere we are visiting<br><i class='fa fa-plane'></i> indicates an airport stop\">"+place["type"]+"</span>" );
+        };
 
-		// add the hotel urls
-		if ( typeof place["hotel"] !== "undefined" && place["hotel"] != "" ) {
-			$( "#"+rowid+" .location-link" ).append( "<span id=\"hotel-icon-"+placename+"\">&nbsp;<a class=\"tooltip\" href=\""+place["hotel"]+"\" title=\"Click to see where we are staying in "+title_place+"\"><i class=\"fa fa-fw fa-bed\"></i></a></span>" );
-		};
-		if ( typeof place["hotel2"] !== "undefined" && place["hotel2"] != "" ) {
-			$( "#"+rowid+" .location-link" ).append( "<span id=\"hotel-2-icon-"+placename+"\">&nbsp;<a class=\"tooltip\" href=\""+place["hotel2"]+"\" title=\"Click to see where we are staying in "+title_place+"\"><i class=\"fa fa-fw fa-bed\"></i></a></span>" );
-		};
+        // add the hotel urls
+        if ( typeof place["hotel"] !== "undefined" && place["hotel"] != "" ) {
+            $( "#"+rowid+" .location-link" ).append( "<span id=\"hotel-icon-"+placename+"\">&nbsp;<a class=\"tooltip\" href=\""+place["hotel"]+"\" title=\"Click to see where we are staying in "+title_place+"\"><i class=\"fa fa-fw fa-bed\"></i></a></span>" );
+        };
+        if ( typeof place["hotel2"] !== "undefined" && place["hotel2"] != "" ) {
+            $( "#"+rowid+" .location-link" ).append( "<span id=\"hotel-2-icon-"+placename+"\">&nbsp;<a class=\"tooltip\" href=\""+place["hotel2"]+"\" title=\"Click to see where we are staying in "+title_place+"\"><i class=\"fa fa-fw fa-bed\"></i></a></span>" );
+        };
 
-		// add a link to webcams
-		if ( typeof place["webcams"] !== "undefined" && place["webcams"] != "" ) {
-			$( "#"+rowid+" .location-link" ).append( "&nbsp;<a class=\"tooltip\" href=\""+place["webcams"]+"\" title=\"Click to see webcams near "+title_place+"\"><i class=\"fa fa-fw fa-camera-retro\"></i></a>" );
-		};
+        // add a link to webcams
+        if ( typeof place["webcams"] !== "undefined" && place["webcams"] != "" ) {
+            $( "#"+rowid+" .location-link" ).append( "&nbsp;<a class=\"tooltip\" href=\""+place["webcams"]+"\" title=\"Click to see webcams near "+title_place+"\"><i class=\"fa fa-fw fa-camera-retro\"></i></a>" );
+        };
 
-		// add the href to the link for this location
-		if ( typeof data.city !== "undefined" ) {
-			$( "#"+rowid+" a:first" ).attr( { "href" : "http://openweathermap.org/city/"+data.city.id } );
-		}
-		else if ( typeof place["id"] !== "undefined" && place["id"] != "" ) {
-			$( "#"+rowid+" a:first" ).attr( { "href" : "http://openweathermap.org/city/"+place["id"] } );
-			$( "#"+rowid+" .location-link" ).append( "<span class=\"lighter\">&nbsp;no weather data near here was found; try again later or <a href=\"http://openweathermap.org/city/"+place["id"]+"\" title=\"Weather not found\">click here</a></span>" );
-		}
-		else {
-			$( "#"+rowid+" .location-link" ).append( "<span class=\"lighter\">&nbsp;no weather data near here was found; <a onclick=\"document.location.reload(true);\" href=\"#\" title=\"Try again\"><i class=\"fa fa-fw fa-refresh\"></i> click here</a> to try again</span>" );
-		};
+        // add the href to the link for this location
+        if ( typeof data.city !== "undefined" ) {
+            $( "#"+rowid+" a:first" ).attr( { "href" : "http://openweathermap.org/city/"+data.city.id } );
+        }
+        else if ( typeof place["id"] !== "undefined" && place["id"] != "" ) {
+            $( "#"+rowid+" a:first" ).attr( { "href" : "http://openweathermap.org/city/"+place["id"] } );
+            $( "#"+rowid+" .location-link" ).append( "<span class=\"lighter\">&nbsp;no weather data near here was found; try again later or <a href=\"http://openweathermap.org/city/"+place["id"]+"\" title=\"Weather not found\">click here</a></span>" );
+        }
+        else {
+            $( "#"+rowid+" .location-link" ).append( "<span class=\"lighter\">&nbsp;no weather data near here was found; <a onclick=\"document.location.reload(true);\" href=\"#\" title=\"Try again\"><i class=\"fa fa-fw fa-refresh\"></i> click here</a> to try again</span>" );
+        };
 
-		// get the length of the data
-		var data_length = data.list.length;
+        // get the length of the data
+        var data_length = data.list.length;
 
-		// define a counter do determine whether the hotel data should be shown
-		var hotel_count = 0;
+        // define a counter do determine whether the hotel data should be shown
+        var hotel_count = 0;
 
-		// loop through all the data
-		for ( var j=0; j<data_length; j++ ) {
-			// define the element being looked at
-			var item = data.list[j];
-			// do the date
-			var utcSeconds = item.dt;
-			var d = new Date(0);
-			d.setUTCSeconds(utcSeconds);
-			var mydate = dow[d.getDay()]+" "+months[d.getMonth()]+" "+d.getDate();
+        // loop through all the data
+        for ( var j=0; j<data_length; j++ ) {
+            // define the element being looked at
+            var item = data.list[j];
+            // do the date
+            var utcSeconds = item.dt;
+            var d = new Date(0);
+            d.setUTCSeconds(utcSeconds);
+            var mydate = dow[d.getDay()]+" "+months[d.getMonth()]+" "+d.getDate();
 
-			// check if the day is in the past
-			if ( utcSeconds <= myEpoch ) { continue; };
-			// otherwise start processing it
-			$( "#"+rowid+" .weather-summary" ).append( "<div class=\"o\" id="+placename+"-"+item.dt+">"+mydate+"</div>" );
+            // check if the day is in the past
+            if ( utcSeconds <= myEpoch ) { continue; };
+            // otherwise start processing it
+            $( "#"+rowid+" .weather-summary" ).append( "<div class=\"o\" id="+placename+"-"+item.dt+">"+mydate+"</div>" );
 
-			// check if we are staying or visiting on this date
-			hotel_count += check_date( mydate, "#"+placename+"-"+item.dt, place["staying"], "r" );
-			hotel_count += check_date( mydate, "#"+placename+"-"+item.dt, place["visiting"], "g" );
+            // check if we are staying or visiting on this date
+            hotel_count += check_date( mydate, "#"+placename+"-"+item.dt, place["staying"], "r" );
+            hotel_count += check_date( mydate, "#"+placename+"-"+item.dt, place["visiting"], "g" );
 
-			// do the image
-			$( "#"+placename+"-"+item.dt ).append( $( "<img>" ).attr( {
-				"src"		:	"images/weather/"+getWeatherIcon(item.weather[0].id,item.weather[0].icon)+".png",
-				"alt"		:	item.weather[0].description+", humidity: "+item.humidity+"%, "+item.clouds+"% cloud cover, "+Math.round(item.speed*2.236936)+"mph "+getCardinal(item.deg)+" wind.",
-				"title"	: toTitleCase(item.weather[0].description)+"<br>Humidity: "+item.humidity+"%<br>"+item.clouds+"% cloud cover<br>"+Math.round(item.speed*2.236936)+"mph "+getCardinal(item.deg)+" wind.",
-				"class"	: "tooltip_click"
-			} ) );
+            // do the image
+            $( "#"+placename+"-"+item.dt ).append( $( "<img>" ).attr( {
+                "src"       :   "images/weather/"+getWeatherIcon(item.weather[0].id,item.weather[0].icon)+".png",
+                "alt"       :   item.weather[0].description+", humidity: "+item.humidity+"%, "+item.clouds+"% cloud cover, "+Math.round(item.speed*2.236936)+"mph "+getCardinal(item.deg)+" wind.",
+                "title" : toTitleCase(item.weather[0].description)+"<br>Humidity: "+item.humidity+"%<br>"+item.clouds+"% cloud cover<br>"+Math.round(item.speed*2.236936)+"mph "+getCardinal(item.deg)+" wind.",
+                "class" : "tooltip_click"
+            } ) );
 
-			// add the description of the weather
-			$( "#"+placename+"-"+item.dt ).append( "<span>"+convertDescription(item.weather[0].description)+"</span>" );
+            // add the description of the weather
+            $( "#"+placename+"-"+item.dt ).append( "<span>"+convertDescription(item.weather[0].description)+"</span>" );
 
-			//http://openweathermap.org/weather-conditions
-			// do the high temperature
-			if ( item.temp.day != item.temp.night ) {
-				$( "#"+placename+"-"+item.dt ).append( "<div style=\"background:#"+getColour(item.temp.day)+"\">"+Math.round(item.temp.day-273.15)+"&deg;C / "+Math.round((item.temp.day-273.15)* 9 / 5 + 32)+"&deg;F</div>" );
-			}
-			else {
-				$( "#"+placename+"-"+item.dt ).append( "<div>&nbsp;</div>" );
-			};
+            //http://openweathermap.org/weather-conditions
+            // do the high temperature
+            if ( item.temp.day != item.temp.night ) {
+                $( "#"+placename+"-"+item.dt ).append( "<div style=\"background:#"+getColour(item.temp.day)+"\">"+Math.round(item.temp.day-273.15)+"&deg;C / "+Math.round((item.temp.day-273.15)* 9 / 5 + 32)+"&deg;F</div>" );
+            }
+            else {
+                $( "#"+placename+"-"+item.dt ).append( "<div>&nbsp;</div>" );
+            };
 
-			// do the low temperature
-			$( "#"+placename+"-"+item.dt ).append( "<div style=\"border-bottom-right-radius: 3px;border-bottom-left-radius: 3px;background:#"+getColour(item.temp.night)+"\">"+Math.round(item.temp.night-273.15)+"&deg;C / "+Math.round((item.temp.night-273.15)* 9 / 5 + 32)+"&deg;F</div>" );
+            // do the low temperature
+            $( "#"+placename+"-"+item.dt ).append( "<div style=\"border-bottom-right-radius: 3px;border-bottom-left-radius: 3px;background:#"+getColour(item.temp.night)+"\">"+Math.round(item.temp.night-273.15)+"&deg;C / "+Math.round((item.temp.night-273.15)* 9 / 5 + 32)+"&deg;F</div>" );
 
-			// set the row height
-			var rowH = 1+parseInt($("#"+rowid+" p").css("height"))+parseInt($("#"+rowid+" .weather-summary div:first").css("height"))-parseInt($("#"+rowid+" .weather-summary div:first").css("margin-bottom"))-parseInt($("#"+rowid+" .weather-summary div:first").css("margin-top"))-parseInt($("#"+rowid+" .weather-summary div:first").css("border-top-width"))-parseInt($("#"+rowid+" .weather-summary div:first").css("border-bottom-width"));
-			if ( parseInt($("#"+rowid).css("height")) > rowH ) { $("#"+rowid+" .weather-summary").css({"height":rowH}); };
-		};
+            // set the row height
+            var rowH = 1+parseInt($("#"+rowid+" p").css("height"))+parseInt($("#"+rowid+" .weather-summary div:first").css("height"))-parseInt($("#"+rowid+" .weather-summary div:first").css("margin-bottom"))-parseInt($("#"+rowid+" .weather-summary div:first").css("margin-top"))-parseInt($("#"+rowid+" .weather-summary div:first").css("border-top-width"))-parseInt($("#"+rowid+" .weather-summary div:first").css("border-bottom-width"));
+            if ( parseInt($("#"+rowid).css("height")) > rowH ) { $("#"+rowid+" .weather-summary").css({"height":rowH}); };
+        };
 
-		// hide hotel data if it is not highlighted
-		if ( hotel_count == 0 ) {
-			$( "#hotel-icon-"+placename ).css( { "display" : "none" } );
-			$( "#hotel-2-icon-"+placename ).css( { "display" : "none" } );
-		};
-		// increment the row counter, add the tooltips if this is the last
-		// row to be drawn and also add mobile specific css
-		row_counter++;
-		if ( Object.keys(locations).length == row_counter ) {
-			$('.tooltip').tooltipster({
-				onlyOne: true,
-				trigger: "hover",
-				theme: "tooltip-theme"
-			});
-			$('.tooltip_html').tooltipster({
-				onlyOne: true,
-				trigger: "hover",
-				contentAsHTML: true,
-				theme: "tooltip-theme"
-			});
-			$('.tooltip_click').tooltipster({
-				onlyOne: true,
-				trigger: "click",
-				contentAsHTML: true,
-				minWidth: 120,
-				maxWidth: 120,
-				theme: "tooltip-theme",
-				timer: 3000
-			});
-			// change things if this is a mobile device
-			if ( mobile_device !== null ) {
-				$( ".row" ).addClass( "mobile-row" );
-				$( ".location-link" ).addClass( "mobile-location" );
-			};
-		};
-	};
+        // hide hotel data if it is not highlighted
+        if ( hotel_count == 0 ) {
+            $( "#hotel-icon-"+placename ).css( { "display" : "none" } );
+            $( "#hotel-2-icon-"+placename ).css( { "display" : "none" } );
+        };
+        // increment the row counter, add the tooltips if this is the last
+        // row to be drawn and also add mobile specific css
+        row_counter++;
+        if ( Object.keys(locations).length == row_counter ) {
+            $('.tooltip').tooltipster({
+                onlyOne: true,
+                trigger: "hover",
+                theme: "tooltip-theme"
+            });
+            $('.tooltip_html').tooltipster({
+                onlyOne: true,
+                trigger: "hover",
+                contentAsHTML: true,
+                theme: "tooltip-theme"
+            });
+            $('.tooltip_click').tooltipster({
+                onlyOne: true,
+                trigger: "click",
+                contentAsHTML: true,
+                minWidth: 120,
+                maxWidth: 120,
+                theme: "tooltip-theme",
+                timer: 3000
+            });
+            // change things if this is a mobile device
+            if ( mobile_device !== null ) {
+                $( ".row" ).addClass( "mobile-row" );
+                $( ".location-link" ).addClass( "mobile-location" );
+            };
+        };
+    };
 
-	$(document).ajaxStop(function () {
-		// hide the throbber
-		$("#throbber").css({"display":"none"});
-	});
+    $(document).ajaxStop(function () {
+        // hide the throbber
+        $("#throbber").css({"display":"none"});
+    });
 
-	// what to do when the page loads
-	$( document ).ready(function() {
-		// loop through the places in the locations object and ajax fetch them
-		for (var loc in locations) {
-			// set up the div
-			var rowid = "weather-"+cleanName(loc)+"-"+cleanName(locations[loc]["longitude"])+"-"+cleanName(locations[loc]["latitude"]);
-			$( "body" ).append( "<div class=\"row\" id=\""+rowid+"\"></div>" );
+    // what to do when the page loads
+    $( document ).ready(function() {
+        // loop through the places in the locations object and ajax fetch them
+        for (var loc in locations) {
+            // set up the div
+            var rowid = "weather-"+cleanName(loc)+"-"+cleanName(locations[loc]["longitude"])+"-"+cleanName(locations[loc]["latitude"]);
+            $( "body" ).append( "<div class=\"row\" id=\""+rowid+"\"></div>" );
 
-			// Because we want to run this on a secure site we cannot use the openweathermap api
-			// directly and we have to go through a google apps script proxy.  if openweathermap
-			// change their policy this can be changed:
-			if ( window.location.protocol === "https" ) {
-				var gasurl = "https://script.google.com/macros/s/AKfycbxHS7bRTssDRt3GGmxN6-AlRme7XbZKZmA6N8sCc9uclvgTJKBq/exec?";
-				if ( typeof locations[loc]["id"] !== "undefined" && locations[loc]["id"] != "" ) {
-					var url = gasurl + "weather_id=" + locations[loc]["id"];
-				}
-				else {
-					var url = gasurl + "latitude=" + locations[loc]["latitude"] + "&longitude=" + locations[loc]["longitude"];
-				};
-			}
-			else {
-				if ( typeof locations[loc]["id"] !== "undefined" && locations[loc]["id"] != "" ) {
-					var url = "http://api.openweathermap.org/data/2.5/forecast/daily?id="+locations[loc]["id"]+"&cnt=16&mode=json&APPID=3cb460fd1b3976e9e5a069b2861dbdfb";
-				}
-				else {
-					var url = "http://api.openweathermap.org/data/2.5/forecast/daily?lat="+locations[loc]["latitude"]+"&lon="+locations[loc]["longitude"]+"&cnt=16&mode=json&APPID=3cb460fd1b3976e9e5a069b2861dbdfb";
-				};
-			}
+            // Because we want to run this on a secure site we cannot use the openweathermap api
+            // directly and we have to go through a google apps script proxy.  if openweathermap
+            // change their policy this can be changed:
+            if ( window.location.protocol === "https" ) {
+                var gasurl = "https://script.google.com/macros/s/AKfycbxHS7bRTssDRt3GGmxN6-AlRme7XbZKZmA6N8sCc9uclvgTJKBq/exec?";
+                if ( typeof locations[loc]["id"] !== "undefined" && locations[loc]["id"] != "" ) {
+                    var url = gasurl + "weather_id=" + locations[loc]["id"];
+                }
+                else {
+                    var url = gasurl + "latitude=" + locations[loc]["latitude"] + "&longitude=" + locations[loc]["longitude"];
+                };
+            }
+            else {
+                if ( typeof locations[loc]["id"] !== "undefined" && locations[loc]["id"] != "" ) {
+                    var url = "http://api.openweathermap.org/data/2.5/forecast/daily?id="+locations[loc]["id"]+"&cnt=16&mode=json&APPID=3cb460fd1b3976e9e5a069b2861dbdfb";
+                }
+                else {
+                    var url = "http://api.openweathermap.org/data/2.5/forecast/daily?lat="+locations[loc]["latitude"]+"&lon="+locations[loc]["longitude"]+"&cnt=16&mode=json&APPID=3cb460fd1b3976e9e5a069b2861dbdfb";
+                };
+            }
 
-			$.ajax( {
-				url: url,
-				dataType: "json",
-				location: loc
-			})
-			.retry({times:3, timeout:500})
-			.then(function(data,success){
-				if ( success === "success" ) {
-					console.log(this.location+" was downloaded");
-					if ( typeof data !== "undefined" ) { drawRow(data, this.location); }
-				} else {
-					console.log(this.location+" was NOT downloaded");
-				}
-			});
+            $.ajax( {
+                url: url,
+                dataType: "json",
+                location: loc
+            })
+            .retry({times:3, timeout:500})
+            .then(function(data,success){
+                if ( success === "success" ) {
+                    console.log(this.location+" was downloaded");
+                    if ( typeof data !== "undefined" ) { drawRow(data, this.location); }
+                } else {
+                    console.log(this.location+" was NOT downloaded");
+                }
+            });
 
-		};
-	});
+        };
+    });
 
-	</script>
+    </script>
 
 </body>
 </html>
