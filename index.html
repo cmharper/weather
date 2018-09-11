@@ -155,7 +155,7 @@
     // define an array of locations to search for
     // name is the location name
     // id is the station id (search for it here:
-    // http://openweathermap.org/maps or by using coordinates first)
+    // https://openweathermap.org/maps or by using coordinates first)
     // type is an icon indicating what sort of place this is eg home, plane
     // latitude and longitude are the coordinates in decimal format
     // staying is an array of special dates (that will be highlighted
@@ -712,11 +712,11 @@
 
         // add the href to the link for this location
         if ( typeof data.city !== "undefined" ) {
-            $( "#"+rowid+" a:first" ).attr( { "href" : "http://openweathermap.org/city/"+data.city.id } );
+            $( "#"+rowid+" a:first" ).attr( { "href" : "https://openweathermap.org/city/"+data.city.id } );
         }
         else if ( typeof place["id"] !== "undefined" && place["id"] != "" ) {
-            $( "#"+rowid+" a:first" ).attr( { "href" : "http://openweathermap.org/city/"+place["id"] } );
-            $( "#"+rowid+" .location-link" ).append( "<span class=\"lighter\">&nbsp;no weather data near here was found; try again later or <a href=\"http://openweathermap.org/city/"+place["id"]+"\" title=\"Weather not found\">click here</a></span>" );
+            $( "#"+rowid+" a:first" ).attr( { "href" : "https://openweathermap.org/city/"+place["id"] } );
+            $( "#"+rowid+" .location-link" ).append( "<span class=\"lighter\">&nbsp;no weather data near here was found; try again later or <a href=\"https://openweathermap.org/city/"+place["id"]+"\" title=\"Weather not found\">click here</a></span>" );
         }
         else {
             $( "#"+rowid+" .location-link" ).append( "<span class=\"lighter\">&nbsp;no weather data near here was found; <a onclick=\"document.location.reload(true);\" href=\"#\" title=\"Try again\"><i class=\"fa fa-fw fa-refresh\"></i> click here</a> to try again</span>" );
@@ -758,7 +758,7 @@
             // add the description of the weather
             $( "#"+placename+"-"+item.dt ).append( "<span>"+convertDescription(item.weather[0].description)+"</span>" );
 
-            //http://openweathermap.org/weather-conditions
+            //https://openweathermap.org/weather-conditions
             // do the high temperature
             if ( item.temp.day != item.temp.night ) {
                 $( "#"+placename+"-"+item.dt ).append( "<div style=\"background:#"+getColour(item.temp.day)+"\">"+Math.round(item.temp.day-273.15)+"&deg;C / "+Math.round((item.temp.day-273.15)* 9 / 5 + 32)+"&deg;F</div>" );
