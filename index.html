@@ -79,7 +79,7 @@
         z-index: 20;
         background-color: #eee;
         font: 10px sans-serif;
-        color: #0;
+        color: #000000;
         width: 100%;
         overflow: hidden;
         overflow-x: hidden;
@@ -819,6 +819,7 @@
 
     // what to do when the page loads
     $( document ).ready(function() {
+        console.log(window.location.protocol);
         // loop through the places in the locations object and ajax fetch them
         for (var loc in locations) {
             // set up the div
@@ -828,7 +829,6 @@
             // Because we want to run this on a secure site we cannot use the openweathermap api
             // directly and we have to go through a google apps script proxy.  if openweathermap
             // change their policy this can be changed:
-            console.log(window.location.protocol);
             if ( window.location.protocol === "https" ) {
                 var gasurl = "https://script.google.com/macros/s/AKfycbxHS7bRTssDRt3GGmxN6-AlRme7XbZKZmA6N8sCc9uclvgTJKBq/exec?";
                 if ( typeof locations[loc]["id"] !== "undefined" && locations[loc]["id"] != "" ) {
