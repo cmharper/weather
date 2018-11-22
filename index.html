@@ -828,23 +828,23 @@
             // Because we want to run this on a secure site we cannot use the openweathermap api
             // directly and we have to go through a google apps script proxy.  if openweathermap
             // change their policy this can be changed:
-            if ( window.location.protocol.startsWith("httpsss") ) {
-                var gasurl = "https://script.google.com/macros/s/AKfycbxHS7bRTssDRt3GGmxN6-AlRme7XbZKZmA6N8sCc9uclvgTJKBq/exec?";
-                if ( typeof locations[loc]["id"] !== "undefined" && locations[loc]["id"] != "" ) {
-                    var url = gasurl + "weather_id=" + locations[loc]["id"];
-                }
-                else {
-                    var url = gasurl + "latitude=" + locations[loc]["latitude"] + "&longitude=" + locations[loc]["longitude"];
-                };
+            // if ( window.location.protocol.startsWith("httpsss") ) {
+                // var gasurl = "https://script.google.com/macros/s/AKfycbxHS7bRTssDRt3GGmxN6-AlRme7XbZKZmA6N8sCc9uclvgTJKBq/exec?";
+                // if ( typeof locations[loc]["id"] !== "undefined" && locations[loc]["id"] != "" ) {
+                    // var url = gasurl + "weather_id=" + locations[loc]["id"];
+                // }
+                // else {
+                    // var url = gasurl + "latitude=" + locations[loc]["latitude"] + "&longitude=" + locations[loc]["longitude"];
+                // };
+            // }
+            // else {
+            if ( typeof locations[loc]["id"] !== "undefined" && locations[loc]["id"] != "" ) {
+                var url = "https://api.openweathermap.org/data/2.5/forecast/daily?id="+locations[loc]["id"]+"&cnt=16&mode=json&APPID=3cb460fd1b3976e9e5a069b2861dbdfb";
             }
             else {
-                if ( typeof locations[loc]["id"] !== "undefined" && locations[loc]["id"] != "" ) {
-                    var url = "http://api.openweathermap.org/data/2.5/forecast/daily?id="+locations[loc]["id"]+"&cnt=16&mode=json&APPID=3cb460fd1b3976e9e5a069b2861dbdfb";
-                }
-                else {
-                    var url = "http://api.openweathermap.org/data/2.5/forecast/daily?lat="+locations[loc]["latitude"]+"&lon="+locations[loc]["longitude"]+"&cnt=16&mode=json&APPID=3cb460fd1b3976e9e5a069b2861dbdfb";
-                };
-            }
+                var url = "https://api.openweathermap.org/data/2.5/forecast/daily?lat="+locations[loc]["latitude"]+"&lon="+locations[loc]["longitude"]+"&cnt=16&mode=json&APPID=3cb460fd1b3976e9e5a069b2861dbdfb";
+            };
+            // }
 
             $.ajax( {
                 url: url,
