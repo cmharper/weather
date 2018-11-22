@@ -828,6 +828,7 @@
             // Because we want to run this on a secure site we cannot use the openweathermap api
             // directly and we have to go through a google apps script proxy.  if openweathermap
             // change their policy this can be changed:
+            console.log(window.location.protocol);
             if ( window.location.protocol === "https" ) {
                 var gasurl = "https://script.google.com/macros/s/AKfycbxHS7bRTssDRt3GGmxN6-AlRme7XbZKZmA6N8sCc9uclvgTJKBq/exec?";
                 if ( typeof locations[loc]["id"] !== "undefined" && locations[loc]["id"] != "" ) {
